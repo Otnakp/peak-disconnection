@@ -8,19 +8,19 @@
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://peak-disconnection.com/">
+    <meta property="og:url" content="https://peakdisconnection.com/">
     <meta property="og:title" content="Peak Disconnection - Master the Art of Strategic Isolation">
     <meta property="og:description" content="Unlock your true potential through optimized disconnection. Master the art of strategic isolation with our comprehensive programs and daily routines.">
-    <meta property="og:image" content="https://peak-disconnection.com/og-image.svg">
+    <meta property="og:image" content="https://peakdisconnection.com/og-image.svg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://peak-disconnection.com/">
+    <meta property="twitter:url" content="https://peakdisconnection.com/">
     <meta property="twitter:title" content="Peak Disconnection - Master the Art of Strategic Isolation">
     <meta property="twitter:description" content="Unlock your true potential through optimized disconnection. Master the art of strategic isolation with our comprehensive programs and daily routines.">
-    <meta property="twitter:image" content="https://peak-disconnection.com/og-image.svg">
+    <meta property="twitter:image" content="https://peakdisconnection.com/og-image.svg">
     
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
@@ -197,7 +197,63 @@
         </div>
     </section>
 
-    <footer id="join">
+    <section class="waitlist" id="join">
+        <div class="container">
+            <h2 class="section-title">Join the Waitlist</h2>
+            <p class="waitlist-subtitle">Ready to embrace strategic isolation? Join our exclusive waitlist.</p>
+            
+            <div class="waitlist-form-container">
+                <form id="waitlistForm" class="waitlist-form">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthDate">Birth Date (Optional)</label>
+                        <input type="date" id="birthDate" name="birthDate">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Which programs interest you? (Optional)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="morningOptimization" name="morningOptimization">
+                                Morning Optimization Protocol
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="workPerformance" name="workPerformance">
+                                Work Performance Standards
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="physicalWellness" name="physicalWellness">
+                                Physical Wellness Guidelines
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="socialExcellence" name="socialExcellence">
+                                Social Excellence Framework
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="environmentalSetup" name="environmentalSetup">
+                                Environmental Setup
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dailyDescription">What do you usually do in a day? (Optional)</label>
+                        <textarea id="dailyDescription" name="dailyDescription" rows="4" placeholder="Describe your typical daily routine..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Join Waitlist</button>
+                    
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="#">Terms of Isolation</a>
