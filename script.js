@@ -39,9 +39,9 @@ counters.forEach(counter => {
     observer.observe(counter);
 });
 
-// Supabase configuration
-const SUPABASE_URL = 'https://bkoslwlgrigxiywbmarz.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJrb3Nsd2xncmlneGl5d2JtYXJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDM3MTM3ODcsImV4cCI6MjA1OTI4OTc4N30.vTE7kz8DUkkdlcozbvnxn_QfajuRe8HKyX779SLjj7g';
+// Supabase configuration - loaded from secure API endpoint
+let supabaseConfig = null;
+let supabase = null;
 
 // Supabase client (using fetch API instead of library to avoid dependencies)
 class SupabaseClient {
@@ -71,7 +71,24 @@ class SupabaseClient {
     }
 }
 
-const supabase = new SupabaseClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Load configuration from secure API endpoint
+async function initializeSupabase() {
+    try {
+        const response = await fetch('/api/config');
+        if (!response.ok) {
+            throw new Error('Failed to load configuration');
+        }
+        supabaseConfig = await response.json();
+        supabase = new SupabaseClient(supabaseConfig.supabaseUrl, supabaseConfig.supabaseAnonKey);
+        return true;
+    } catch (error) {
+        console.error('Failed to initialize Supabase:', error);
+        return false;
+    }
+}
+
+// Initialize Supabase when the page loads
+initializeSupabase();
 
 // Waitlist form handling
 document.getElementById('waitlistForm').addEventListener('submit', async (e) => {
@@ -87,6 +104,14 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
     messageDiv.textContent = '';
     
     try {
+        // Ensure Supabase is initialized
+        if (!supabase) {
+            const initialized = await initializeSupabase();
+            if (!initialized) {
+                throw new Error('Unable to connect to service');
+            }
+        }
+        
         // Prepare data for Supabase
         const data = {
             email: formData.get('email'),
@@ -132,11 +157,32 @@ setTimeout(() => {
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         z-index: 10000;
         animation: slideIn 0.5s ease-out;
+        cursor: pointer;
+        transition: transform 0.3s ease;
     `;
     notification.innerHTML = `
         <p style="margin: 0; font-weight: bold;">🎮 Limited Time Offer!</p>
         <p style="margin: 5px 0 0 0; font-size: 14px;">Join now and get 3 months of premium isolation</p>
     `;
+    
+    // Make it clickable - scroll to waitlist
+    notification.addEventListener('click', () => {
+        document.querySelector('#join').scrollIntoView({
+            behavior: 'smooth'
+        });
+        notification.style.animation = 'slideOut 0.5s ease-in';
+        setTimeout(() => notification.remove(), 500);
+    });
+    
+    // Add hover effect
+    notification.addEventListener('mouseenter', () => {
+        notification.style.transform = 'scale(1.05)';
+    });
+    
+    notification.addEventListener('mouseleave', () => {
+        notification.style.transform = 'scale(1)';
+    });
+    
     document.body.appendChild(notification);
     
     setTimeout(() => {
