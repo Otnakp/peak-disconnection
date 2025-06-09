@@ -8,33 +8,61 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Counter animation
+// Counter animation - optimized for performance
 const counters = document.querySelectorAll('.counter');
-const speed = 200;
 
 counters.forEach(counter => {
-    const animate = () => {
-        const value = +counter.getAttribute('data-target');
-        const data = +counter.innerText;
-        const time = value / speed;
-        
-        if (data < value) {
-            counter.innerText = Math.ceil(data + time);
-            setTimeout(animate, 1);
-        } else {
-            counter.innerText = value;
-        }
-    }
+    let hasAnimated = false;
     
-    // Start animation when in viewport
+    const animate = () => {
+        if (hasAnimated) return; // Prevent multiple animations
+        
+        const target = +counter.getAttribute('data-target');
+        let current = 0;
+        const startTime = performance.now();
+        
+        // Smart duration based on target size
+        let duration;
+        if (target > 1000000) {
+            duration = 1000; // Large numbers: 1 second
+        } else if (target > 1000) {
+            duration = 2000; // Medium numbers: 2 seconds
+        } else {
+            duration = 3000; // Small numbers: 3 seconds
+        }
+        
+        const step = (currentTime) => {
+            if (hasAnimated) return; // Safety check
+            
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            current = Math.floor(target * easeOutQuart);
+            
+            counter.innerText = current.toLocaleString();
+            
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                counter.innerText = target.toLocaleString();
+                hasAnimated = true;
+            }
+        };
+        
+        requestAnimationFrame(step);
+    };
+    
+    // Start animation when in viewport - with proper cleanup
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !hasAnimated) {
                 animate();
-                observer.unobserve(entry.target);
+                observer.disconnect(); // Important: disconnect to prevent memory leaks
             }
         });
-    });
+    }, { threshold: 0.1 });
     
     observer.observe(counter);
 });
@@ -143,7 +171,7 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
     }
 });
 
-// Add notification popup after 5 seconds
+// Add notification popup after 5 seconds - optimized
 setTimeout(() => {
     const notification = document.createElement('div');
     notification.style.cssText = `
@@ -156,37 +184,50 @@ setTimeout(() => {
         border-radius: 10px;
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         z-index: 10000;
-        animation: slideIn 0.5s ease-out;
+        transform: translateX(400px);
+        transition: transform 0.5s ease-out;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        will-change: transform;
     `;
     notification.innerHTML = `
         <p style="margin: 0; font-weight: bold;">🎮 Limited Time Offer!</p>
         <p style="margin: 5px 0 0 0; font-size: 14px;">Join now and get 3 months of premium isolation</p>
     `;
     
+    document.body.appendChild(notification);
+    
+    // Animate in
+    requestAnimationFrame(() => {
+        notification.style.transform = 'translateX(0)';
+    });
+    
     // Make it clickable - scroll to waitlist
     notification.addEventListener('click', () => {
         document.querySelector('#join').scrollIntoView({
             behavior: 'smooth'
         });
-        notification.style.animation = 'slideOut 0.5s ease-in';
+        notification.style.transform = 'translateX(400px)';
         setTimeout(() => notification.remove(), 500);
     });
     
-    // Add hover effect
+    // Add hover effect with efficient transitions
     notification.addEventListener('mouseenter', () => {
-        notification.style.transform = 'scale(1.05)';
+        notification.style.transform = 'translateX(0) scale(1.05)';
     });
     
     notification.addEventListener('mouseleave', () => {
-        notification.style.transform = 'scale(1)';
+        notification.style.transform = 'translateX(0) scale(1)';
     });
     
-    document.body.appendChild(notification);
-    
+    // Auto-remove after 8 seconds
     setTimeout(() => {
-        notification.style.animation = 'slideOut 0.5s ease-in';
-        setTimeout(() => notification.remove(), 500);
+        if (notification.parentNode) {
+            notification.style.transform = 'translateX(400px)';
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.remove();
+                }
+            }, 500);
+        }
     }, 8000);
 }, 5000); 
