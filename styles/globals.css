@@ -101,32 +101,20 @@ nav {
   z-index: 1;
   opacity: 0.7;
   animation-fill-mode: both;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
-/* Floating animations */
+/* GPU-accelerated floating animations - simplified for performance */
 @keyframes float1 {
-  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
-  50% { transform: translateY(-8px) rotate(var(--rotation)); }
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(var(--rotation)); }
+  50% { transform: translate3d(0, -8px, 0) rotate(var(--rotation)); }
 }
 
 @keyframes float2 {
-  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
-  50% { transform: translateY(-12px) rotate(var(--rotation)); }
-}
-
-@keyframes float3 {
-  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
-  50% { transform: translateY(-6px) rotate(var(--rotation)); }
-}
-
-@keyframes float4 {
-  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
-  50% { transform: translateY(-10px) rotate(var(--rotation)); }
-}
-
-@keyframes float5 {
-  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
-  50% { transform: translateY(-15px) rotate(var(--rotation)); }
+  0%, 100% { transform: translate3d(0, 0px, 0) rotate(var(--rotation)); }
+  50% { transform: translate3d(0, -12px, 0) rotate(var(--rotation)); }
 }
 
 .app-logo img {
@@ -168,7 +156,7 @@ nav {
   left: 20%;
   --rotation: -25deg;
   transform: rotate(-25deg);
-  animation: float3 2.8s ease-in-out infinite;
+  animation: float1 2.8s ease-in-out infinite;
   animation-delay: 1.2s;
 }
 
@@ -186,7 +174,7 @@ nav {
   right: 8%;
   --rotation: 30deg;
   transform: rotate(30deg);
-  animation: float4 2.6s ease-in-out infinite;
+  animation: float2 2.6s ease-in-out infinite;
   animation-delay: 2.1s;
 }
 
@@ -195,7 +183,7 @@ nav {
   right: 18%;
   --rotation: 15deg;
   transform: rotate(15deg);
-  animation: float5 3.1s ease-in-out infinite;
+  animation: float1 3.1s ease-in-out infinite;
   animation-delay: 1.5s;
 }
 
@@ -223,7 +211,7 @@ nav {
   left: 25%;
   --rotation: -8deg;
   transform: rotate(-8deg);
-  animation: float3 3.4s ease-in-out infinite;
+  animation: float1 3.4s ease-in-out infinite;
   animation-delay: 1.8s;
 }
 
@@ -251,7 +239,7 @@ nav {
   right: 25%;
   --rotation: 18deg;
   transform: rotate(18deg);
-  animation: float4 3.3s ease-in-out infinite;
+  animation: float2 3.3s ease-in-out infinite;
   animation-delay: 2.4s;
 }
 
@@ -279,7 +267,7 @@ nav {
   left: 20%;
   --rotation: -25deg;
   transform: rotate(-25deg);
-  animation: float5 2.5s ease-in-out infinite;
+  animation: float1 2.5s ease-in-out infinite;
   animation-delay: 0.7s;
 }
 
@@ -293,7 +281,7 @@ nav {
   right: 8%;
   --rotation: 12deg;
   transform: rotate(12deg);
-  animation: float3 3.6s ease-in-out infinite;
+  animation: float1 3.6s ease-in-out infinite;
   animation-delay: 1.9s;
 }
 
@@ -321,7 +309,7 @@ nav {
   left: 30%;
   --rotation: -15deg;
   transform: rotate(-15deg);
-  animation: float4 3.8s ease-in-out infinite;
+  animation: float2 3.8s ease-in-out infinite;
   animation-delay: 2.2s;
 }
 
@@ -349,7 +337,7 @@ nav {
   right: 35%;
   --rotation: 25deg;
   transform: rotate(25deg);
-  animation: float5 3.2s ease-in-out infinite;
+  animation: float1 3.2s ease-in-out infinite;
   animation-delay: 0.4s;
 }
 
@@ -363,7 +351,7 @@ nav {
   right: 35%;
   --rotation: 16deg;
   transform: rotate(16deg);
-  animation: float3 2.9s ease-in-out infinite;
+  animation: float1 2.9s ease-in-out infinite;
   animation-delay: 1.7s;
 }
 
@@ -392,7 +380,7 @@ nav {
   right: 12%;
   --rotation: 35deg;
   transform: rotate(35deg);
-  animation: float4 2.6s ease-in-out infinite;
+  animation: float2 2.6s ease-in-out infinite;
   animation-delay: 0.8s;
 }
 
@@ -420,7 +408,7 @@ nav {
   left: 35%;
   --rotation: -22deg;
   transform: rotate(-22deg);
-  animation: float5 3.5s ease-in-out infinite;
+  animation: float1 3.5s ease-in-out infinite;
   animation-delay: 2.3s;
 }
 
@@ -434,7 +422,7 @@ nav {
   right: 20%;
   --rotation: 40deg;
   transform: rotate(40deg);
-  animation: float3 2.8s ease-in-out infinite;
+  animation: float1 2.8s ease-in-out infinite;
   animation-delay: 0.2s;
 }
 
@@ -462,7 +450,7 @@ nav {
   right: 40%;
   --rotation: 45deg;
   transform: rotate(45deg);
-  animation: float4 3.9s ease-in-out infinite;
+  animation: float2 3.9s ease-in-out infinite;
   animation-delay: 2.5s;
 }
 
@@ -490,7 +478,7 @@ nav {
   right: 20%;
   --rotation: -20deg;
   transform: rotate(-20deg);
-  animation: float5 3.2s ease-in-out infinite;
+  animation: float1 3.2s ease-in-out infinite;
   animation-delay: 1.0s;
 }
 
@@ -504,7 +492,7 @@ nav {
   left: 25%;
   --rotation: -15deg;
   transform: rotate(-15deg);
-  animation: float3 3.6s ease-in-out infinite;
+  animation: float1 3.6s ease-in-out infinite;
   animation-delay: 2.7s;
 }
 
@@ -532,7 +520,7 @@ nav {
   left: 30%;
   --rotation: -28deg;
   transform: rotate(-28deg);
-  animation: float4 3.4s ease-in-out infinite;
+  animation: float2 3.4s ease-in-out infinite;
   animation-delay: 1.8s;
 }
 
@@ -560,7 +548,7 @@ nav {
   left: 40%;
   --rotation: -18deg;
   transform: rotate(-18deg);
-  animation: float5 2.9s ease-in-out infinite;
+  animation: float1 2.9s ease-in-out infinite;
   animation-delay: 0.7s;
 }
 
@@ -574,7 +562,7 @@ nav {
   right: 40%;
   --rotation: 50deg;
   transform: rotate(50deg);
-  animation: float3 3.1s ease-in-out infinite;
+  animation: float1 3.1s ease-in-out infinite;
   animation-delay: 2.1s;
 }
 
