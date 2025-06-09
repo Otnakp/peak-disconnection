@@ -1,3 +1,5 @@
 supabase_setup.sql
 .env
 migration_to_screen_maxi.sql
+/node_modules/*
+node_modules/*
