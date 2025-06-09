@@ -86,17 +86,22 @@ nav {
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: 6rem;
     margin-bottom: 1rem;
-    background: linear-gradient(to right, #fff 0%, #999 100%);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    background: linear-gradient(to right, #fff 0%, #ff4444 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px rgba(255, 68, 68, 0.5);
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
     color: var(--text-secondary);
     margin-bottom: 2rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
 }
 
 .cta-button {
@@ -302,7 +307,11 @@ footer {
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.6rem;
     }
     
     .nav-links {
