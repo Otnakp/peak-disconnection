@@ -9,7 +9,7 @@
   --secondary: #2d2d2d;
   --accent: #4a9eff;
   --text: #ffffff;
-  --text-secondary: #b0b0b0;
+  --text-secondary: #eaeaea;
   --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
@@ -36,6 +36,15 @@ header {
   top: 0;
   z-index: 1000;
   border-bottom: 1px solid #333;
+  transition: transform 0.3s ease-in-out;
+}
+
+.header-hidden {
+  transform: translateY(-100%);
+}
+
+.header-visible {
+  transform: translateY(0);
 }
 
 nav {
@@ -75,26 +84,111 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  background: 
+    radial-gradient(ellipse at top left, rgba(255, 68, 68, 0.201) 0%, transparent 50%),
+    radial-gradient(ellipse at top right, rgba(255, 0, 191, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom, rgba(26, 39, 53, 0.8) 0%, #090A0F 100%);
   position: relative;
   padding-top: 70px;
   overflow: hidden;
 }
 
+/* Hero Background with Instagram logos */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.glass-container {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  opacity: 0.4;
+}
+
+.glass-container-1 {
+  top: 15%;
+  left: 8%;
+  width: 140px;
+  height: 140px;
+}
+
+.glass-container-2 {
+  top: 35%;
+  right: 12%;
+  width: 180px;
+  height: 180px;
+}
+
+.glass-container-3 {
+  bottom: 20%;
+  left: 65%;
+  width: 120px;
+  height: 120px;
+}
+
+.instagram-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(40%) sepia(20%) hue-rotate(320deg) brightness(0.8);
+  opacity: 0.6;
+}
+
+/* Dark overlay for better text readability */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
 .hero-content {
   text-align: center;
-  z-index: 2;
+  z-index: 3;
   position: relative;
 }
 
 .hero h1 {
-  font-size: 6rem;
-  margin-bottom: 1rem;
+  font-size: 12rem;
+  margin-bottom: 0,5rem;
   font-weight: 900;
   letter-spacing: -0.02em;
-  background: linear-gradient(to right, #fff 0%, #ff4444 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  line-height: 0.95;
+}
+
+/* Individual word styling */
+.word-fuck {
+  color: #fd1e1e;
+  font-size: 1em; /* Relative to h1 size */
+}
+
+.word-fixing {
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
+.word-your {
+  color: #ffffff;
+  font-size: 0.8em;
+}
+
+.word-life {
+  color: #ff00bf;
+  font-size: 1.2em; /* 20% larger than other words */
 }
 
 .hero-subtitle {
@@ -108,7 +202,7 @@ nav {
 .cta-button {
   display: inline-block;
   padding: 1rem 2.5rem;
-  background: var(--gradient);
+  background: linear-gradient(135deg, #ff4444 0%, #ff00bf 100%);
   color: white;
   text-decoration: none;
   border-radius: 50px;
@@ -118,7 +212,7 @@ nav {
 
 .cta-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 10px 25px rgba(255, 68, 68, 0.4);
 }
 
 /* Program Section */
@@ -306,5 +400,24 @@ nav {
   .waitlist-form {
     padding: 2rem;
     margin: 0 1rem;
+  }
+  
+  /* Hide one logo on mobile and adjust positions */
+  .glass-container-3 {
+    display: none;
+  }
+  
+  .glass-container-1 {
+    top: 20%;
+    left: 5%;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .glass-container-2 {
+    top: 60%;
+    right: 8%;
+    width: 120px;
+    height: 120px;
   }
 } 
