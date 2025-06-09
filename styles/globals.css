@@ -93,73 +93,528 @@ nav {
   overflow: hidden;
 }
 
-/* Hero Background with Instagram logos */
-.hero-background {
+
+
+/* App logos around text */
+.app-logo {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
+  z-index: 1;
+  opacity: 0.7;
+  animation-fill-mode: both;
 }
 
-.glass-container {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 20px;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  opacity: 0.4;
+/* Floating animations */
+@keyframes float1 {
+  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+  50% { transform: translateY(-8px) rotate(var(--rotation)); }
 }
 
-.glass-container-1 {
-  top: 15%;
-  left: 8%;
-  width: 140px;
-  height: 140px;
+@keyframes float2 {
+  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+  50% { transform: translateY(-12px) rotate(var(--rotation)); }
 }
 
-.glass-container-2 {
+@keyframes float3 {
+  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+  50% { transform: translateY(-6px) rotate(var(--rotation)); }
+}
+
+@keyframes float4 {
+  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+  50% { transform: translateY(-10px) rotate(var(--rotation)); }
+}
+
+@keyframes float5 {
+  0%, 100% { transform: translateY(0px) rotate(var(--rotation)); }
+  50% { transform: translateY(-15px) rotate(var(--rotation)); }
+}
+
+.app-logo img {
+  object-fit: contain;
+}
+
+/* Much more varied sizes for all logos */
+.app-logo-instagram-1 img {
+  width: 65px;
+  height: 65px;
+}
+
+.app-logo-instagram-2 img {
+  width: 50px;
+  height: 50px;
+}
+
+.app-logo-tiktok-1 img {
+  width: 130px;
+  height: 130px;
+}
+
+.app-logo-tiktok-2 img {
+  width: 80px;
+  height: 80px;
+}
+
+.app-logo-instagram-1 {
+  top: 18%;
+  left: 12%;
+  --rotation: -15deg;
+  transform: rotate(-15deg);
+  animation: float1 3.2s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+.app-logo-instagram-2 {
+  bottom: 25%;
+  left: 20%;
+  --rotation: -25deg;
+  transform: rotate(-25deg);
+  animation: float3 2.8s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.app-logo-tiktok-1 {
+  top: 20%;
+  right: 15%;
+  --rotation: 20deg;
+  transform: rotate(20deg);
+  animation: float2 3.5s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.app-logo-tiktok-2 {
+  top: 45%;
+  right: 8%;
+  --rotation: 30deg;
+  transform: rotate(30deg);
+  animation: float4 2.6s ease-in-out infinite;
+  animation-delay: 2.1s;
+}
+
+.app-logo-ahegao-1 {
+  bottom: 15%;
+  right: 18%;
+  --rotation: 15deg;
+  transform: rotate(15deg);
+  animation: float5 3.1s ease-in-out infinite;
+  animation-delay: 1.5s;
+}
+
+.app-logo-ahegao-1 img {
+  width: 110px;
+  height: 110px;
+}
+
+.app-logo-ahegao-2 {
   top: 35%;
-  right: 12%;
-  width: 180px;
-  height: 180px;
+  left: 8%;
+  --rotation: -20deg;
+  transform: rotate(-20deg);
+  animation: float1 2.9s ease-in-out infinite;
+  animation-delay: 0.3s;
 }
 
-.glass-container-3 {
+.app-logo-ahegao-2 img {
+  width: 55px;
+  height: 55px;
+}
+
+.app-logo-steam {
+  top: 12%;
+  left: 25%;
+  --rotation: -8deg;
+  transform: rotate(-8deg);
+  animation: float3 3.4s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+.app-logo-steam img {
+  width: 95px;
+  height: 95px;
+}
+
+.app-logo-twitch {
+  bottom: 12%;
+  right: 25%;
+  --rotation: 22deg;
+  transform: rotate(22deg);
+  animation: float2 2.7s ease-in-out infinite;
+  animation-delay: 0.9s;
+}
+
+.app-logo-twitch img {
+  width: 70px;
+  height: 70px;
+}
+
+.app-logo-discord {
+  top: 35%;
+  right: 25%;
+  --rotation: 18deg;
+  transform: rotate(18deg);
+  animation: float4 3.3s ease-in-out infinite;
+  animation-delay: 2.4s;
+}
+
+.app-logo-discord img {
+  width: 115px;
+  height: 115px;
+}
+
+.app-logo-playstation {
+  bottom: 35%;
+  left: 12%;
+  --rotation: -18deg;
+  transform: rotate(-18deg);
+  animation: float1 3.0s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+.app-logo-playstation img {
+  width: 85px;
+  height: 85px;
+}
+
+.app-logo-xbox {
+  top: 55%;
+  left: 20%;
+  --rotation: -25deg;
+  transform: rotate(-25deg);
+  animation: float5 2.5s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+.app-logo-xbox img {
+  width: 60px;
+  height: 60px;
+}
+
+.app-logo-youtube {
+  bottom: 18%;
+  right: 8%;
+  --rotation: 12deg;
+  transform: rotate(12deg);
+  animation: float3 3.6s ease-in-out infinite;
+  animation-delay: 1.9s;
+}
+
+.app-logo-youtube img {
+  width: 125px;
+  height: 125px;
+}
+
+.app-logo-snapchat {
+  top: 8%;
+  right: 30%;
+  --rotation: 28deg;
+  transform: rotate(28deg);
+  animation: float2 2.4s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+.app-logo-snapchat img {
+  width: 55px;
+  height: 55px;
+}
+
+.app-logo-reddit {
+  bottom: 8%;
+  left: 30%;
+  --rotation: -15deg;
+  transform: rotate(-15deg);
+  animation: float4 3.8s ease-in-out infinite;
+  animation-delay: 2.2s;
+}
+
+.app-logo-reddit img {
+  width: 75px;
+  height: 75px;
+}
+
+.app-logo-twitter {
+  top: 25%;
+  left: 18%;
+  --rotation: -12deg;
+  transform: rotate(-12deg);
+  animation: float1 2.8s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+.app-logo-twitter img {
+  width: 70px;
+  height: 70px;
+}
+
+.app-logo-x {
+  bottom: 25%;
+  right: 35%;
+  --rotation: 25deg;
+  transform: rotate(25deg);
+  animation: float5 3.2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.app-logo-x img {
+  width: 50px;
+  height: 50px;
+}
+
+.app-logo-spotify {
+  top: 45%;
+  right: 35%;
+  --rotation: 16deg;
+  transform: rotate(16deg);
+  animation: float3 2.9s ease-in-out infinite;
+  animation-delay: 1.7s;
+}
+
+.app-logo-spotify img {
+  width: 62px;
+  height: 62px;
+}
+
+/* New additional logos with increased size variation */
+.app-logo-instagram-3 {
+  top: 60%;
+  left: 35%;
+  --rotation: -30deg;
+  transform: rotate(-30deg);
+  animation: float2 3.7s ease-in-out infinite;
+  animation-delay: 2.0s;
+}
+
+.app-logo-instagram-3 img {
+  width: 95px;
+  height: 95px;
+}
+
+.app-logo-tiktok-3 {
+  bottom: 35%;
+  right: 12%;
+  --rotation: 35deg;
+  transform: rotate(35deg);
+  animation: float4 2.6s ease-in-out infinite;
+  animation-delay: 0.8s;
+}
+
+.app-logo-tiktok-3 img {
+  width: 110px;
+  height: 110px;
+}
+
+.app-logo-ahegao-3 {
+  top: 10%;
+  left: 35%;
+  --rotation: -35deg;
+  transform: rotate(-35deg);
+  animation: float1 3.1s ease-in-out infinite;
+  animation-delay: 1.3s;
+}
+
+.app-logo-ahegao-3 img {
+  width: 30px;
+  height: 30px;
+}
+
+.app-logo-steam-2 {
+  bottom: 40%;
+  left: 35%;
+  --rotation: -22deg;
+  transform: rotate(-22deg);
+  animation: float5 3.5s ease-in-out infinite;
+  animation-delay: 2.3s;
+}
+
+.app-logo-steam-2 img {
+  width: 105px;
+  height: 105px;
+}
+
+.app-logo-twitch-2 {
+  top: 65%;
+  right: 20%;
+  --rotation: 40deg;
+  transform: rotate(40deg);
+  animation: float3 2.8s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+.app-logo-twitch-2 img {
+  width: 85px;
+  height: 85px;
+}
+
+.app-logo-discord-2 {
   bottom: 20%;
-  left: 65%;
+  left: 8%;
+  --rotation: -40deg;
+  transform: rotate(-40deg);
+  animation: float2 3.3s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+.app-logo-discord-2 img {
+  width: 32px;
+  height: 32px;
+}
+
+.app-logo-playstation-2 {
+  top: 30%;
+  right: 40%;
+  --rotation: 45deg;
+  transform: rotate(45deg);
+  animation: float4 3.9s ease-in-out infinite;
+  animation-delay: 2.5s;
+}
+
+.app-logo-playstation-2 img {
   width: 120px;
   height: 120px;
 }
 
-.instagram-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: grayscale(40%) sepia(20%) hue-rotate(320deg) brightness(0.8);
-  opacity: 0.6;
+.app-logo-xbox-2 {
+  bottom: 45%;
+  right: 40%;
+  --rotation: 25deg;
+  transform: rotate(25deg);
+  animation: float1 2.7s ease-in-out infinite;
+  animation-delay: 0.9s;
 }
 
-/* Dark overlay for better text readability */
-.hero-overlay {
+.app-logo-xbox-2 img {
+  width: 90px;
+  height: 90px;
+}
+
+.app-logo-youtube-2 {
+  top: 15%;
+  right: 20%;
+  --rotation: -20deg;
+  transform: rotate(-20deg);
+  animation: float5 3.2s ease-in-out infinite;
+  animation-delay: 1.0s;
+}
+
+.app-logo-youtube-2 img {
+  width: 35px;
+  height: 35px;
+}
+
+.app-logo-youtube-3 {
+  bottom: 30%;
+  left: 25%;
+  --rotation: -15deg;
+  transform: rotate(-15deg);
+  animation: float3 3.6s ease-in-out infinite;
+  animation-delay: 2.7s;
+}
+
+.app-logo-youtube-3 img {
+  width: 115px;
+  height: 115px;
+}
+
+.app-logo-snapchat-2 {
+  top: 50%;
+  left: 5%;
+  --rotation: -45deg;
+  transform: rotate(-45deg);
+  animation: float2 2.5s ease-in-out infinite;
+  animation-delay: 0.1s;
+}
+
+.app-logo-snapchat-2 img {
+  width: 75px;
+  height: 75px;
+}
+
+.app-logo-reddit-2 {
+  top: 40%;
+  left: 30%;
+  --rotation: -28deg;
+  transform: rotate(-28deg);
+  animation: float4 3.4s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+.app-logo-reddit-2 img {
+  width: 28px;
+  height: 28px;
+}
+
+.app-logo-twitter-2 {
+  bottom: 50%;
+  right: 30%;
+  --rotation: 32deg;
+  transform: rotate(32deg);
+  animation: float1 3.8s ease-in-out infinite;
+  animation-delay: 2.6s;
+}
+
+.app-logo-twitter-2 img {
+  width: 100px;
+  height: 100px;
+}
+
+.app-logo-x-2 {
+  top: 25%;
+  left: 40%;
+  --rotation: -18deg;
+  transform: rotate(-18deg);
+  animation: float5 2.9s ease-in-out infinite;
+  animation-delay: 0.7s;
+}
+
+.app-logo-x-2 img {
+  width: 65px;
+  height: 65px;
+}
+
+.app-logo-x-3 {
+  bottom: 10%;
+  right: 40%;
+  --rotation: 50deg;
+  transform: rotate(50deg);
+  animation: float3 3.1s ease-in-out infinite;
+  animation-delay: 2.1s;
+}
+
+.app-logo-x-3 img {
+  width: 125px;
+  height: 125px;
+}
+
+.app-logo-spotify-2 {
+  top: 5%;
+  left: 15%;
+  --rotation: -50deg;
+  transform: rotate(-50deg);
+  animation: float2 2.4s ease-in-out infinite;
+  animation-delay: 1.4s;
+}
+
+.app-logo-spotify-2 img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Glass overlay between logos and text */
+.hero-glass-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
+  background: rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .hero-content {
   text-align: center;
-  z-index: 3;
   position: relative;
+  margin-top: -10vh;
+  z-index: 3;
 }
 
 .hero h1 {
@@ -191,9 +646,18 @@ nav {
   font-size: 1.2em; /* 20% larger than other words */
 }
 
+/* Subtitle word styling */
+.word-maximize {
+  color: #ff4444;
+  font-size: 1.5em;
+  font-weight: 800;
+}
+
 .hero-subtitle {
   font-size: 2.2rem;
   color: var(--text-secondary);
+  margin-top: 2rem;
+  vertical-align: 90%;
   margin-bottom: 2rem;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -386,38 +850,357 @@ nav {
 
 @media (max-width: 768px) {
   .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
   
   .hero-subtitle {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+  }
+  
+  .word-maximize {
+    font-size: 1.3em;
   }
   
   .nav-links {
     display: none;
   }
   
+  /* Much more varied mobile sizes */
+  .app-logo-instagram-1 img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .app-logo-instagram-2 img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .app-logo-tiktok-1 img {
+    width: 78px;
+    height: 78px;
+  }
+  
+  .app-logo-tiktok-2 img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .app-logo-instagram-1 {
+    top: 12%;
+    left: 5%;
+  }
+  
+  .app-logo-instagram-2 {
+    bottom: 20%;
+    left: 8%;
+  }
+  
+  .app-logo-tiktok-1 {
+    top: 15%;
+    right: 8%;
+  }
+  
+  .app-logo-tiktok-2 {
+    top: 40%;
+    right: 5%;
+  }
+  
+  .app-logo-ahegao-1 {
+    bottom: 12%;
+    right: 10%;
+  }
+  
+  .app-logo-ahegao-1 img {
+    width: 66px;
+    height: 66px;
+  }
+  
+  .app-logo-ahegao-2 {
+    top: 30%;
+    left: 5%;
+  }
+  
+  .app-logo-ahegao-2 img {
+    width: 33px;
+    height: 33px;
+  }
+  
+  .app-logo-steam {
+    top: 8%;
+    left: 15%;
+  }
+  
+  .app-logo-steam img {
+    width: 57px;
+    height: 57px;
+  }
+  
+  .app-logo-twitch {
+    bottom: 8%;
+    right: 15%;
+  }
+  
+  .app-logo-twitch img {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .app-logo-discord {
+    top: 28%;
+    right: 15%;
+  }
+  
+  .app-logo-discord img {
+    width: 69px;
+    height: 69px;
+  }
+  
+  .app-logo-playstation {
+    bottom: 28%;
+    left: 8%;
+  }
+  
+  .app-logo-playstation img {
+    width: 51px;
+    height: 51px;
+  }
+  
+  .app-logo-xbox {
+    top: 48%;
+    left: 12%;
+  }
+  
+  .app-logo-xbox img {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .app-logo-youtube {
+    bottom: 5%;
+    right: 5%;
+  }
+  
+  .app-logo-youtube img {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .app-logo-snapchat {
+    top: 5%;
+    right: 20%;
+  }
+  
+  .app-logo-snapchat img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .app-logo-reddit {
+    bottom: 5%;
+    left: 25%;
+  }
+  
+  .app-logo-reddit img {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .app-logo-twitter {
+    top: 20%;
+    left: 12%;
+  }
+  
+  .app-logo-twitter img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .app-logo-x {
+    bottom: 20%;
+    right: 25%;
+  }
+  
+  .app-logo-x img {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .app-logo-spotify {
+    top: 38%;
+    right: 25%;
+  }
+  
+  .app-logo-spotify img {
+    width: 38px;
+    height: 38px;
+  }
+  
+  /* New logos mobile styles */
+  .app-logo-instagram-3 {
+    top: 55%;
+    left: 25%;
+  }
+  
+  .app-logo-instagram-3 img {
+    width: 58px;
+    height: 58px;
+  }
+  
+  .app-logo-tiktok-3 {
+    bottom: 25%;
+    right: 8%;
+  }
+  
+  .app-logo-tiktok-3 img {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .app-logo-ahegao-3 {
+    top: 8%;
+    left: 25%;
+  }
+  
+  .app-logo-ahegao-3 img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .app-logo-steam-2 {
+    bottom: 35%;
+    left: 25%;
+  }
+  
+  .app-logo-steam-2 img {
+    width: 62px;
+    height: 62px;
+  }
+  
+  .app-logo-twitch-2 {
+    top: 60%;
+    right: 12%;
+  }
+  
+  .app-logo-twitch-2 img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .app-logo-discord-2 {
+    bottom: 15%;
+    left: 5%;
+  }
+  
+  .app-logo-discord-2 img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .app-logo-playstation-2 {
+    top: 25%;
+    right: 30%;
+  }
+  
+  .app-logo-playstation-2 img {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .app-logo-xbox-2 {
+    bottom: 40%;
+    right: 30%;
+  }
+  
+  .app-logo-xbox-2 img {
+    width: 54px;
+    height: 54px;
+  }
+  
+  .app-logo-youtube-2 {
+    top: 12%;
+    right: 15%;
+  }
+  
+  .app-logo-youtube-2 img {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .app-logo-youtube-3 {
+    bottom: 25%;
+    left: 15%;
+  }
+  
+  .app-logo-youtube-3 img {
+    width: 68px;
+    height: 68px;
+  }
+  
+  .app-logo-snapchat-2 {
+    top: 45%;
+    left: 3%;
+  }
+  
+  .app-logo-snapchat-2 img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .app-logo-reddit-2 {
+    top: 35%;
+    left: 22%;
+  }
+  
+  .app-logo-reddit-2 img {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .app-logo-twitter-2 {
+    bottom: 45%;
+    right: 22%;
+  }
+  
+  .app-logo-twitter-2 img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .app-logo-x-2 {
+    top: 22%;
+    left: 30%;
+  }
+  
+  .app-logo-x-2 img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .app-logo-x-3 {
+    bottom: 8%;
+    right: 30%;
+  }
+  
+  .app-logo-x-3 img {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .app-logo-spotify-2 {
+    top: 3%;
+    left: 10%;
+  }
+  
+  .app-logo-spotify-2 img {
+    width: 25px;
+    height: 25px;
+  }
+  
   .waitlist-form {
     padding: 2rem;
     margin: 0 1rem;
   }
-  
-  /* Hide one logo on mobile and adjust positions */
-  .glass-container-3 {
-    display: none;
-  }
-  
-  .glass-container-1 {
-    top: 20%;
-    left: 5%;
-    width: 100px;
-    height: 100px;
-  }
-  
-  .glass-container-2 {
-    top: 60%;
-    right: 8%;
-    width: 120px;
-    height: 120px;
-  }
+
 } 
