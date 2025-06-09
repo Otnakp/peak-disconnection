@@ -1,1 +1,3 @@
 supabase_setup.sql
+.env
+migration_to_screen_maxi.sql

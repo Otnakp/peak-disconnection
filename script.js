@@ -124,10 +124,10 @@ document.getElementById('waitlistForm').addEventListener('submit', async (e) => 
             daily_description: formData.get('dailyDescription') || null
         };
         
-        await supabase.insert('peak_disconnect_subscribers', data);
+        await supabase.insert('screen_maxi_subscribers', data);
         
         // Success message
-        messageDiv.innerHTML = '<span style="color: #4ade80;">✅ Successfully joined the waitlist! Welcome to Peak Disconnection.</span>';
+        messageDiv.innerHTML = '<span style="color: #4ade80;">✅ Successfully joined the waitlist! Welcome to Screen Maxi.</span>';
         e.target.reset();
         
     } catch (error) {

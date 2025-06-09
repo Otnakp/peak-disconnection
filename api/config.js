@@ -7,8 +7,8 @@ export default function handler(req, res) {
     // Set CORS headers to allow your domain
     const origin = req.headers.origin;
     const allowedOrigins = [
-        'https://peakdisconnection.com',
-        'https://www.peakdisconnection.com',
+        'https://screenmaxi.com',
+        'https://www.screenmaxi.com',
         'http://localhost:3000', // for local development
         'http://localhost:5000',
         'http://127.0.0.1:3000',
