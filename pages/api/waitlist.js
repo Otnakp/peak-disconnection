@@ -1,10 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
-
-const supabaseUrl = process.env.SUPABASE_URL || 'https://bkoslwlgrigxiywbmarz.supabase.co';
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
 export default async function handler(req, res) {
   // Only allow POST requests
   if (req.method !== 'POST') {
@@ -29,33 +22,25 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Email is required' });
     }
 
-    // Insert into database
-    const { data, error } = await supabase
-      .from('waitlist')
-      .insert([
-        {
-          email,
-          birth_date: birthDate || null,
-          morning_optimization: morningOptimization || false,
-          work_performance: workPerformance || false,
-          physical_wellness: physicalWellness || false,
-          social_excellence: socialExcellence || false,
-          environmental_setup: environmentalSetup || false,
-          digital_dependency: digitalDependency || false,
-          daily_description: dailyDescription || null,
-          created_at: new Date().toISOString()
-        }
-      ])
-      .select();
+    // Log the data for now (replace with actual database insert later)
+    console.log('Waitlist submission:', {
+      email,
+      birthDate,
+      morningOptimization,
+      workPerformance,
+      physicalWellness,
+      socialExcellence,
+      environmentalSetup,
+      digitalDependency,
+      dailyDescription,
+      timestamp: new Date().toISOString()
+    });
 
-    if (error) {
-      console.error('Database error:', error);
-      return res.status(500).json({ message: 'Database error', error: error.message });
-    }
-
+    // For now, just return success
+    // TODO: Replace with actual database insertion
     res.status(200).json({ 
-      message: 'Successfully joined the waitlist!', 
-      data: data[0] 
+      message: 'Successfully joined the waitlist!',
+      data: { email, timestamp: new Date().toISOString() }
     });
 
   } catch (error) {
