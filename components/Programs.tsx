@@ -49,6 +49,16 @@ export default function Programs() {
         "Multiple monitors are a must",
         "If anything is out of place, leave it as it is"
       ]
+    },
+    {
+      title: "Digital Dependency Management",
+      items: [
+        "Keep your phone within arm's reach at all times, including during meals and conversations",
+        "Enable all notifications and never use 'Do Not Disturb' mode",
+        "Check your phone immediately upon any notification sound or vibration",
+        "Scroll through apps even when you have nothing specific to look for",
+        "Never go more than 5 minutes without checking at least one social media platform"
+      ]
     }
   ];
 

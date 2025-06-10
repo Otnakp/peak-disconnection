@@ -11,6 +11,7 @@ export default function WaitlistForm() {
     physicalWellness: false,
     socialExcellence: false,
     environmentalSetup: false,
+    digitalDependency: false,
     dailyDescription: ''
   });
 
@@ -30,23 +31,35 @@ export default function WaitlistForm() {
     setMessage('');
 
     try {
-      // Here you would typically send the data to your API
-      // For now, we'll just simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      setMessage('✅ Successfully joined the waitlist! Welcome to Screen Maxi.');
-      setFormData({
-        email: '',
-        birthDate: '',
-        morningOptimization: false,
-        workPerformance: false,
-        physicalWellness: false,
-        socialExcellence: false,
-        environmentalSetup: false,
-        dailyDescription: ''
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setMessage('✅ Successfully joined the waitlist! Welcome to Screen Maxi.');
+        setFormData({
+          email: '',
+          birthDate: '',
+          morningOptimization: false,
+          workPerformance: false,
+          physicalWellness: false,
+          socialExcellence: false,
+          environmentalSetup: false,
+          digitalDependency: false,
+          dailyDescription: ''
+        });
+      } else {
+        setMessage(`❌ ${result.message || 'Error joining waitlist. Please try again.'}`);
+      }
     } catch (error) {
-      setMessage('❌ Error joining waitlist. Please try again.');
+      console.error('Form submission error:', error);
+      setMessage('❌ Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -60,88 +73,105 @@ export default function WaitlistForm() {
         
         <div className="waitlist-form-container">
           <form className="waitlist-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="email">Email Address *</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="your@email.com"
-                value={formData.email}
-                onChange={handleInputChange}
-              />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="email">Email Address *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="your@email.com"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="birthDate">Birth Date (Optional)</label>
+                <input
+                  type="date"
+                  id="birthDate"
+                  name="birthDate"
+                  value={formData.birthDate}
+                  onChange={handleInputChange}
+                />
+              </div>
             </div>
             
             <div className="form-group">
-              <label htmlFor="birthDate">Birth Date (Optional)</label>
-              <input
-                type="date"
-                id="birthDate"
-                name="birthDate"
-                value={formData.birthDate}
-                onChange={handleInputChange}
-              />
-            </div>
-            
-            <div className="form-group">
-              <label>Which programs interest you? (Optional)</label>
-              <div className="checkbox-group">
-                <label className="checkbox-label">
+              <label>Programs of Interest (Optional)</label>
+              <div className="programs-grid">
+                <div className={`program-checkbox ${formData.morningOptimization ? 'checked' : ''}`} onClick={() => setFormData(prev => ({ ...prev, morningOptimization: !prev.morningOptimization }))}>
                   <input
                     type="checkbox"
                     name="morningOptimization"
                     checked={formData.morningOptimization}
                     onChange={handleInputChange}
+                    style={{ display: 'none' }}
                   />
-                  <span>Morning Optimization Protocol</span>
-                </label>
-                <label className="checkbox-label">
+                  <span className="program-name">Morning Optimization</span>
+                </div>
+                <div className={`program-checkbox ${formData.workPerformance ? 'checked' : ''}`} onClick={() => setFormData(prev => ({ ...prev, workPerformance: !prev.workPerformance }))}>
                   <input
                     type="checkbox"
                     name="workPerformance"
                     checked={formData.workPerformance}
                     onChange={handleInputChange}
+                    style={{ display: 'none' }}
                   />
-                  <span>Work Performance Standards</span>
-                </label>
-                <label className="checkbox-label">
+                  <span className="program-name">Work Performance</span>
+                </div>
+                <div className={`program-checkbox ${formData.physicalWellness ? 'checked' : ''}`} onClick={() => setFormData(prev => ({ ...prev, physicalWellness: !prev.physicalWellness }))}>
                   <input
                     type="checkbox"
-                    name="physicalWellness"
+                    name="workPerformance"
                     checked={formData.physicalWellness}
                     onChange={handleInputChange}
+                    style={{ display: 'none' }}
                   />
-                  <span>Physical Wellness Guidelines</span>
-                </label>
-                <label className="checkbox-label">
+                  <span className="program-name">Physical Wellness</span>
+                </div>
+                <div className={`program-checkbox ${formData.socialExcellence ? 'checked' : ''}`} onClick={() => setFormData(prev => ({ ...prev, socialExcellence: !prev.socialExcellence }))}>
                   <input
                     type="checkbox"
                     name="socialExcellence"
                     checked={formData.socialExcellence}
                     onChange={handleInputChange}
+                    style={{ display: 'none' }}
                   />
-                  <span>Social Excellence Framework</span>
-                </label>
-                <label className="checkbox-label">
+                  <span className="program-name">Social Excellence</span>
+                </div>
+                <div className={`program-checkbox ${formData.environmentalSetup ? 'checked' : ''}`} onClick={() => setFormData(prev => ({ ...prev, environmentalSetup: !prev.environmentalSetup }))}>
                   <input
                     type="checkbox"
                     name="environmentalSetup"
                     checked={formData.environmentalSetup}
                     onChange={handleInputChange}
+                    style={{ display: 'none' }}
                   />
-                  <span>Environmental Setup</span>
-                </label>
+                  <span className="program-name">Environmental Setup</span>
+                </div>
+                <div className={`program-checkbox ${formData.digitalDependency ? 'checked' : ''}`} onClick={() => setFormData(prev => ({ ...prev, digitalDependency: !prev.digitalDependency }))}>
+                  <input
+                    type="checkbox"
+                    name="digitalDependency"
+                    checked={formData.digitalDependency}
+                    onChange={handleInputChange}
+                    style={{ display: 'none' }}
+                  />
+                  <span className="program-name">Digital Dependency</span>
+                </div>
               </div>
             </div>
             
             <div className="form-group">
-              <label htmlFor="dailyDescription">What do you usually do in a day? (Optional)</label>
+              <label htmlFor="dailyDescription">Daily Routine Description (Optional)</label>
               <textarea
                 id="dailyDescription"
                 name="dailyDescription"
                 rows={4}
-                placeholder="Describe your typical daily routine..."
+                placeholder="Tell us about your typical day..."
                 value={formData.dailyDescription}
                 onChange={handleInputChange}
               />
