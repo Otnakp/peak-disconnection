@@ -94,7 +94,7 @@ export default function WaitlistForm() {
                     checked={formData.morningOptimization}
                     onChange={handleInputChange}
                   />
-                  Morning Optimization Protocol
+                  <span>Morning Optimization Protocol</span>
                 </label>
                 <label className="checkbox-label">
                   <input
@@ -103,7 +103,7 @@ export default function WaitlistForm() {
                     checked={formData.workPerformance}
                     onChange={handleInputChange}
                   />
-                  Work Performance Standards
+                  <span>Work Performance Standards</span>
                 </label>
                 <label className="checkbox-label">
                   <input
@@ -112,7 +112,7 @@ export default function WaitlistForm() {
                     checked={formData.physicalWellness}
                     onChange={handleInputChange}
                   />
-                  Physical Wellness Guidelines
+                  <span>Physical Wellness Guidelines</span>
                 </label>
                 <label className="checkbox-label">
                   <input
@@ -121,7 +121,7 @@ export default function WaitlistForm() {
                     checked={formData.socialExcellence}
                     onChange={handleInputChange}
                   />
-                  Social Excellence Framework
+                  <span>Social Excellence Framework</span>
                 </label>
                 <label className="checkbox-label">
                   <input
@@ -130,7 +130,7 @@ export default function WaitlistForm() {
                     checked={formData.environmentalSetup}
                     onChange={handleInputChange}
                   />
-                  Environmental Setup
+                  <span>Environmental Setup</span>
                 </label>
               </div>
             </div>
