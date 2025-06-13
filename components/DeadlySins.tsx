@@ -90,6 +90,11 @@ export default function DeadlySins() {
     }
   ];
 
+  // Small helper to lazy-load images for better scroll performance
+  const LazyImage = ({ src, alt, className }) => (
+    <img src={src} alt={alt} className={className} loading="lazy" decoding="async" />
+  );
+
   // Special component for the wrath section
   const WrathSection = ({ sin }) => (
     <div className="wrath-showcase">
@@ -167,7 +172,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="wrath-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="wrath-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="wrath-hero-image" />
         </div>
       </div>
     </div>
@@ -246,7 +251,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="pride-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="pride-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="pride-hero-image" />
         </div>
       </div>
     </div>
@@ -325,7 +330,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="envy-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="envy-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="envy-hero-image" />
         </div>
       </div>
     </div>
@@ -404,7 +409,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="laziness-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="laziness-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="lazyness-hero-image" />
         </div>
       </div>
     </div>
@@ -475,7 +480,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="materialism-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="materialism-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="materialism-hero-image" />
         </div>
       </div>
     </div>
@@ -546,7 +551,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="desire-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="desire-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="desire-hero-image" />
         </div>
       </div>
     </div>
@@ -609,7 +614,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="food-hero-image-container">
-          <img src={sin.image} alt={sin.title} className="food-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="food-hero-image" />
         </div>
       </div>
     </div>

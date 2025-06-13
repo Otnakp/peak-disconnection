@@ -898,6 +898,13 @@ nav {
   z-index: 2;
 }
 
+.sins-container > div {
+  /* Improve scroll performance: isolate each large section and avoid painting when off-screen */
+  content-visibility: auto;
+  contain: layout paint style;
+  contain-intrinsic-size: 1000px 1000px; /* fallback size when off-screen */
+}
+
 /* Food Section - Hero Statement Layout */
 .food-showcase {
   position: relative;
@@ -929,6 +936,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .food-line {
@@ -1141,6 +1151,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .desire-line {
@@ -1364,6 +1377,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .materialism-line {
@@ -1587,6 +1603,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .laziness-line {
@@ -1823,6 +1842,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .envy-line {
@@ -2057,6 +2079,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .pride-line {
@@ -2291,6 +2316,9 @@ nav {
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  will-change: transform;
+  transform: translateZ(0);
+  contain: paint;
 }
 
 .wrath-line {
