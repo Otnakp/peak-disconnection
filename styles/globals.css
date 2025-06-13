@@ -291,8 +291,8 @@ nav {
 }
 
 .app-logo-snapchat {
-  top: 8%;
-  right: 30%;
+  top: 6%;
+  right: 10%;
   --rotation: 28deg;
   transform: rotate(28deg);
   animation: float2 2.4s ease-in-out infinite;
@@ -305,8 +305,9 @@ nav {
 }
 
 .app-logo-reddit {
-  bottom: 8%;
-  left: 30%;
+  top: 58%;
+  left: 12%;
+  bottom: auto;
   --rotation: -15deg;
   transform: rotate(-15deg);
   animation: float2 3.8s ease-in-out infinite;
@@ -319,8 +320,8 @@ nav {
 }
 
 .app-logo-twitter {
-  top: 25%;
-  left: 18%;
+  top: 48%;
+  left: 8%;
   --rotation: -12deg;
   transform: rotate(-12deg);
   animation: float1 2.8s ease-in-out infinite;
@@ -433,7 +434,7 @@ nav {
 
 .app-logo-discord-2 {
   bottom: 20%;
-  left: 8%;
+  left: 19%;
   --rotation: -40deg;
   transform: rotate(-40deg);
   animation: float2 3.3s ease-in-out infinite;
@@ -474,8 +475,8 @@ nav {
 }
 
 .app-logo-youtube-2 {
-  top: 15%;
-  right: 20%;
+  top: 4%;
+  right: 8%;
   --rotation: -20deg;
   transform: rotate(-20deg);
   animation: float1 3.2s ease-in-out infinite;
@@ -502,7 +503,7 @@ nav {
 }
 
 .app-logo-snapchat-2 {
-  top: 50%;
+  top: 10%;
   left: 5%;
   --rotation: -45deg;
   transform: rotate(-45deg);
@@ -583,6 +584,85 @@ nav {
 .app-logo-spotify-2 img {
   width: 40px;
   height: 40px;
+}
+
+/* TikTok videos background */
+.tiktok-videos-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+  filter: blur(3px);
+  display: flex;
+  gap: 60px;
+  justify-content: center;
+}
+
+.video-scroll-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  will-change: transform;
+  width: 210px;
+}
+
+.video-column-left {
+  animation: scrollVideosLeft 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.video-column-right {
+  animation: scrollVideosRight 13s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.tiktok-video {
+  width: 210px;
+  height: 378px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 auto;
+  display: block;
+}
+
+@keyframes scrollVideosLeft {
+  0% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-12.5%);
+  }
+  50% {
+    transform: translateY(-20%);
+  }
+  75% {
+    transform: translateY(-37.5%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes scrollVideosRight {
+  0% {
+    transform: translateY(-200px);
+  }
+  25% {
+    transform: translateY(calc(-200px - 12.5%));
+  }
+  50% {
+    transform: translateY(calc(-200px - 20%));
+  }
+  75% {
+    transform: translateY(calc(-200px - 37.5%));
+  }
+  100% {
+    transform: translateY(calc(-200px - 50%));
+  }
 }
 
 /* Glass overlay between logos and text */
@@ -1503,4 +1583,87 @@ nav {
     border-left: none;
   }
 
+  /* Mobile video layout - single column */
+  .tiktok-videos-container {
+    width: 240px;
+    gap: 0;
+  }
+  
+  .video-column-right {
+    display: none;
+  }
+  
+  .video-column-left {
+    animation: scrollVideosMobile 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .tiktok-video {
+    width: 168px;
+    height: 300px;
+  }
+
+@keyframes scrollVideosMobile {
+  0% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-15%);
+  }
+  60% {
+    transform: translateY(-25%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
+} 
+/* Hide specific mid-screen logos */
+.app-logo-xbox,
+.app-logo-xbox-2,
+.app-logo-instagram-2,
+.app-logo-instagram-3 {
+  display: none;
+}
+
+.app-logo-instagram-4 {
+  top: 6%;
+  right: 4%;
+  --rotation: 12deg;
+  transform: rotate(12deg);
+  animation: float1 2.9s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+.app-logo-instagram-4 img {
+  width: 55px;
+  height: 55px;
+}
+
+.app-logo-twitter-3 {
+  top: 40%;
+  left: 4%;
+  --rotation: -18deg;
+  transform: rotate(-18deg);
+  animation: float2 3.1s ease-in-out infinite;
+  animation-delay: 1.1s;
+}
+
+.app-logo-twitter-3 img {
+  width: 70px;
+  height: 70px;
+}
+
+.app-logo-youtube-4 {
+  bottom: 67%;
+  right: 6%;
+  --rotation: -10deg;
+  transform: rotate(-10deg);
+  animation: float1 3.3s ease-in-out infinite;
+  animation-delay: 1.9s;
+}
+
+.app-logo-youtube-4 img {
+  width: 85px;
+  height: 85px;
 } 

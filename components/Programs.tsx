@@ -65,7 +65,7 @@ export default function Programs() {
   return (
     <section className="programs" id="programs">
       <div className="container">
-        <h2 className="section-title">Core Programs</h2>
+        <h2 className="section-title">Follow the program</h2>
         <div className="program-grid">
           {programs.map((program, index) => (
             <div key={index} className="program-card">

@@ -109,7 +109,54 @@ export default function Hero() {
       <div className="app-logo app-logo-spotify-2">
         <img src="/bgdata/Spotify_logo_without_text.svg.png" alt="" />
       </div>
+      <div className="app-logo app-logo-instagram-4">
+        <img src="/bgdata/Instagram_icon.png" alt="" />
+      </div>
+      <div className="app-logo app-logo-twitter-3">
+        <img src="/bgdata/Logo_of_Twitter.svg.png" alt="" />
+      </div>
+      <div className="app-logo app-logo-youtube-4">
+        <img src="/bgdata/Youtube_logo.png" alt="" />
+      </div>
       
+      {/* Background TikTok videos */}
+      <div className="tiktok-videos-container">
+        <div className="video-scroll-column video-column-left">
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/1.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/2.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/3.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/4.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/5.webm" type="video/webm" />
+          </video>
+        </div>
+        <div className="video-scroll-column video-column-right">
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/6.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/7.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/8.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/9.webm" type="video/webm" />
+          </video>
+          <video autoPlay muted loop playsInline className="tiktok-video">
+            <source src="/videos/10.webm" type="video/webm" />
+          </video>
+        </div>
+      </div>
+
       {/* Glass overlay between logos and text */}
       <div className="hero-glass-overlay"></div>
       
