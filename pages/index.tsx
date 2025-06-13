@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useState } from 'react'
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
+import DeadlySins from '@/components/DeadlySins'
 import Programs from '@/components/Programs'
 import WaitlistForm from '@/components/WaitlistForm'
 
@@ -57,6 +58,7 @@ export default function Home() {
       <main>
         <Header />
         <Hero />
+        <DeadlySins />
         <Programs />
         <WaitlistForm />
       </main>

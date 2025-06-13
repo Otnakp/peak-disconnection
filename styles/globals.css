@@ -592,7 +592,7 @@ nav {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 480px;
+  width: 750px; /* accommodate 3 columns (210px each + 2*60px gaps) */
   height: 100%;
   overflow: hidden;
   z-index: 1;
@@ -662,6 +662,29 @@ nav {
   }
   100% {
     transform: translateY(calc(-200px - 50%));
+  }
+}
+
+/* Middle column animation */
+.video-column-middle {
+  animation: scrollVideosMiddle 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes scrollVideosMiddle {
+  0% {
+    transform: translateY(-100px);
+  }
+  25% {
+    transform: translateY(calc(-100px - 12.5%));
+  }
+  50% {
+    transform: translateY(calc(-100px - 20%));
+  }
+  75% {
+    transform: translateY(calc(-100px - 37.5%));
+  }
+  100% {
+    transform: translateY(calc(-100px - 50%));
   }
 }
 
@@ -776,6 +799,1747 @@ nav {
 .cta-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(255, 68, 68, 0.4);
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  animation: fadeInUp 1s ease-out 2s both;
+}
+
+.scroll-chevron {
+  width: 28px;
+  height: 5px;
+  opacity: 0;
+  border-radius: 3px;
+  background: linear-gradient(135deg, #ff4444 0%, #ff00bf 100%);
+  animation: chevronMove 2s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+}
+
+.scroll-chevron:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.scroll-chevron:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.scroll-chevron:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes chevronMove {
+  25% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Deadly Sins Section */
+.deadly-sins {
+  padding: 8rem 0;
+  position: relative;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(255, 68, 68, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 80%, rgba(255, 0, 191, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(26, 26, 26, 0.95) 0%, var(--primary) 100%);
+  overflow: hidden;
+}
+
+.deadly-sins::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ff4444" fill-opacity="0.03"><circle cx="20" cy="20" r="1"/></g></svg>');
+  pointer-events: none;
+}
+
+.sins-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* Food Section - Hero Statement Layout */
+.food-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.food-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.food-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.food-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.food-line-1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.food-line-2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.food-line-3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.food-line-4 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.food-line-5 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.food-line-6 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.food-line-7 {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.food-line-8 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.food-line-9 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  max-width: 80%;
+  margin: 0 auto 1rem auto;
+}
+
+.food-line-10 {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.food-line-11 {
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.food-line-12 {
+  font-size: 1.9rem;
+  font-weight: 800;
+}
+
+/* Stylized words within text - enhanced for overlay */
+.food-word-emphasis {
+  color: #ff4444;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.food-word-large {
+  font-size: 1.3em;
+  color: #ff0088;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.food-word-accent {
+  color: #4488ff;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.food-word-deserve {
+  font-size: 1.4em;
+  color: #ff0066;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.food-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(255, 68, 68, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.food-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(255, 68, 68, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.food-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.food-hero-image-container:hover .food-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for text lines */
+.food-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Desire Section - Hero Statement Layout */
+.desire-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.desire-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.desire-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.desire-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.desire-line-1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.desire-line-2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.desire-line-3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.desire-line-4 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.desire-line-5 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.desire-line-6 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.desire-line-7 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.desire-line-8 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.desire-line-9 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+  max-width: 80%;
+}
+
+.desire-line-10 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.desire-line-11 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.desire-line-12 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.desire-line-13 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.desire-line-14 {
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+/* Stylized words within desire text - purple/pink theme */
+.desire-word-emphasis {
+  color: #ff44aa;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.desire-word-large {
+  font-size: 1.3em;
+  color: #aa44ff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.desire-word-accent {
+  color: #ff6644;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.desire-word-deserve {
+  font-size: 1.4em;
+  color: #ff0088;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.desire-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(255, 68, 170, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.desire-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(255, 68, 170, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.desire-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.desire-hero-image-container:hover .desire-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for desire text lines */
+.desire-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Materialism Section - Hero Statement Layout */
+.materialism-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.materialism-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.materialism-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.materialism-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.materialism-line-1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.materialism-line-2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.materialism-line-3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.materialism-line-4 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.materialism-line-5 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.materialism-line-6 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.materialism-line-7 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.materialism-line-8 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.materialism-line-9 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+}
+
+.materialism-line-10 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.materialism-line-11 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.materialism-line-12 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.materialism-line-13 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.materialism-line-14 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+/* Stylized words within materialism text - gold/luxury theme */
+.materialism-word-emphasis {
+  color: #ffaa44;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.materialism-word-large {
+  font-size: 1.3em;
+  color: #ffd700;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.materialism-word-accent {
+  color: #ff8844;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.materialism-word-deserve {
+  font-size: 1.4em;
+  color: #ffcc00;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.materialism-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(255, 170, 68, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.materialism-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(255, 170, 68, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.materialism-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.materialism-hero-image-container:hover .materialism-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for materialism text lines */
+.materialism-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Laziness Section - Hero Statement Layout */
+.laziness-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.laziness-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.laziness-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.laziness-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.laziness-line-1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.laziness-line-2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.laziness-line-3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.laziness-line-4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.laziness-line-5 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.laziness-line-6 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.laziness-line-7 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.laziness-line-8 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.laziness-line-9 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.laziness-line-10 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.laziness-line-11 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.laziness-line-12 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.laziness-line-13 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.laziness-line-14 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.laziness-line-15 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.laziness-line-16 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* Stylized words within laziness text - blue/teal relaxation theme */
+.laziness-word-emphasis {
+  color: #44aaff;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.laziness-word-large {
+  font-size: 1.3em;
+  color: #66ccff;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.laziness-word-accent {
+  color: #88ddff;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.laziness-word-deserve {
+  font-size: 1.4em;
+  color: #00aaff;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.laziness-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(68, 170, 255, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.laziness-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(68, 170, 255, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.laziness-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.laziness-hero-image-container:hover .laziness-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for laziness text lines */
+.laziness-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Envy Section - Hero Statement Layout */
+.envy-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.envy-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.envy-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.envy-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.envy-line-1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.envy-line-2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.envy-line-3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.envy-line-4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.envy-line-5 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.envy-line-6 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.envy-line-7 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.envy-line-8 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.envy-line-9 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.envy-line-10 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.envy-line-11 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.envy-line-12 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.envy-line-13 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.envy-line-14 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.envy-line-15 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.envy-line-16 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-top: 0.5rem;
+}
+
+/* Stylized words within envy text - green/neon social media theme */
+.envy-word-emphasis {
+  color: #44ff88;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.envy-word-large {
+  font-size: 1.3em;
+  color: #00ff66;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.envy-word-accent {
+  color: #66ff99;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.envy-word-deserve {
+  font-size: 1.4em;
+  color: #22ff77;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.envy-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(68, 255, 136, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.envy-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(68, 255, 136, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.envy-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.envy-hero-image-container:hover .envy-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for envy text lines */
+.envy-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Pride Section - Hero Statement Layout */
+.pride-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.pride-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.pride-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.pride-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.pride-line-1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pride-line-2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.pride-line-3 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.pride-line-4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.pride-line-5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pride-line-6 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.pride-line-7 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.pride-line-8 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.pride-line-9 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pride-line-10 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.pride-line-11 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.pride-line-12 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.pride-line-13 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.pride-line-14 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.pride-line-15 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.pride-line-16 {
+  font-size: 1.8rem;
+  font-weight: 900;
+  margin-top: 0.5rem;
+}
+
+/* Stylized words within pride text - gold/yellow success theme */
+.pride-word-emphasis {
+  color: #ffcc00;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.pride-word-large {
+  font-size: 1.3em;
+  color: #ffd700;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.pride-word-accent {
+  color: #ffaa44;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.pride-word-deserve {
+  font-size: 1.4em;
+  color: #ff8800;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.pride-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(255, 204, 0, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.pride-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(255, 204, 0, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.pride-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.pride-hero-image-container:hover .pride-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for pride text lines */
+.pride-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Wrath Section - Hero Statement Layout */
+.wrath-showcase {
+  position: relative;
+  padding: 4rem 0 6rem 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wrath-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Artistic Poetry Text Layout - Overlay */
+.wrath-poetry {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.wrath-line {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: rgba(255, 255, 255, 0.98);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  text-shadow: 
+    2px 2px 4px rgba(0, 0, 0, 1),
+    -1px -1px 2px rgba(0, 0, 0, 0.8),
+    1px -1px 2px rgba(0, 0, 0, 0.8),
+    -1px 1px 2px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+/* Overlay text styling - centered and readable */
+.wrath-line-1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.wrath-line-2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.wrath-line-3 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.wrath-line-4 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+}
+
+.wrath-line-5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.wrath-line-6 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.wrath-line-7 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
+  margin-bottom: 1.5rem;
+}
+
+.wrath-line-8 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.wrath-line-9 {
+  font-size: 1.2rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.wrath-line-10 {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.wrath-line-11 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.wrath-line-12 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.wrath-line-13 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+}
+
+.wrath-line-14 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.wrath-line-15 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.wrath-line-16 {
+  font-size: 1.1rem;
+  font-weight: 400;
+  opacity: 0.8;
+}
+
+.wrath-line-17 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Stylized words within wrath text - red/orange fire theme */
+.wrath-word-emphasis {
+  color: #ff4444;
+  font-weight: 800;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.wrath-word-large {
+  font-size: 1.3em;
+  color: #ff0000;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.wrath-word-accent {
+  color: #ff6644;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 
+    3px 3px 6px rgba(0, 0, 0, 1),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    1px -1px 3px rgba(0, 0, 0, 0.9),
+    -1px 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+.wrath-word-deserve {
+  font-size: 1.4em;
+  color: #ff2200;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-shadow: 
+    4px 4px 8px rgba(0, 0, 0, 1),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    2px -2px 4px rgba(0, 0, 0, 0.9),
+    -2px 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+/* Massive Hero Image */
+.wrath-hero-image-container {
+  width: 90vw;
+  max-width: 1000px;
+  height: 80vh;
+  max-height: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 
+    0 50px 100px rgba(0, 0, 0, 0.6),
+    0 0 0 4px rgba(255, 68, 68, 0.4),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: pointer;
+}
+
+.wrath-hero-image-container:hover {
+  transform: scale(1.01) translateY(-10px);
+  box-shadow: 
+    0 60px 120px rgba(0, 0, 0, 0.7),
+    0 0 0 4px rgba(255, 68, 68, 0.6),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+}
+
+.wrath-hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.wrath-hero-image-container:hover .wrath-hero-image {
+  transform: scale(1.03);
+}
+
+/* Hover effects for wrath text lines */
+.wrath-line:hover {
+  transform: translateX(10px);
+  color: rgba(255, 255, 255, 1);
+}
+
+/* Simple Section Layout for other sins */
+.simple-sin {
+  position: relative;
+  padding: 3rem 0;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.simple-sin-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff4444 0%, #ff00bf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 2rem;
+}
+
+.simple-sin-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.simple-sin-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(234, 234, 234, 0.9);
+  font-weight: 400;
+  padding: 1.5rem;
+  background: rgba(45, 45, 45, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.simple-sin-text:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(45, 45, 45, 0.4);
 }
 
 /* Program Section */
@@ -1481,6 +3245,333 @@ nav {
     height: 45px;
   }
   
+  /* Laziness mobile styles */
+  .laziness-showcase {
+    padding: 3rem 0 4rem 0;
+  }
+  
+  .laziness-content {
+    flex-direction: column;
+  }
+  
+  .laziness-poetry {
+    padding: 1rem;
+  }
+  
+  .laziness-line-1 {
+    font-size: 1.3rem;
+  }
+  
+  .laziness-line-2,
+  .laziness-line-3,
+  .laziness-line-7,
+  .laziness-line-9,
+  .laziness-line-11,
+  .laziness-line-13 {
+    font-size: 0.9rem;
+  }
+  
+  .laziness-line-4,
+  .laziness-line-8,
+  .laziness-line-12,
+  .laziness-line-14 {
+    font-size: 1rem;
+  }
+  
+  .laziness-line-5,
+  .laziness-line-10 {
+    font-size: 0.8rem;
+  }
+  
+  .laziness-line-6,
+  .laziness-line-15 {
+    font-size: 1.1rem;
+  }
+  
+  .laziness-line-16 {
+    font-size: 0.9rem;
+  }
+  
+  .laziness-hero-image-container {
+    width: 100%;
+    height: 60vh;
+    max-height: 600px;
+    min-height: 500px;
+    border-radius: 25px;
+  }
+  
+  /* Mobile fix for text overlay */
+  .laziness-line {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    padding: 0 0.5rem;
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+  
+  .laziness-word-emphasis,
+  .laziness-word-large,
+  .laziness-word-accent,
+  .laziness-word-deserve {
+    text-shadow:
+      2px 2px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+  
+  .laziness-line:hover {
+    transform: none;
+  }
+  
+  /* Envy mobile styles */
+  .envy-showcase {
+    padding: 3rem 0 4rem 0;
+  }
+  
+  .envy-content {
+    flex-direction: column;
+  }
+  
+  .envy-poetry {
+    padding: 1rem;
+  }
+  
+  .envy-line-1 {
+    font-size: 1.2rem;
+  }
+  
+  .envy-line-2 {
+    font-size: 1.3rem;
+  }
+  
+  .envy-line-3,
+  .envy-line-5,
+  .envy-line-7,
+  .envy-line-11,
+  .envy-line-13,
+  .envy-line-15 {
+    font-size: 0.9rem;
+  }
+  
+  .envy-line-4,
+  .envy-line-6,
+  .envy-line-8,
+  .envy-line-9,
+  .envy-line-10,
+  .envy-line-12 {
+    font-size: 1rem;
+  }
+  
+  .envy-line-14 {
+    font-size: 1.1rem;
+  }
+  
+  .envy-line-16 {
+    font-size: 1.3rem;
+  }
+  
+  .envy-hero-image-container {
+    width: 100%;
+    height: 60vh;
+    max-height: 600px;
+    min-height: 500px;
+    border-radius: 25px;
+  }
+  
+  /* Mobile fix for text overlay */
+  .envy-line {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    padding: 0 0.5rem;
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+  
+  .envy-word-emphasis,
+  .envy-word-large,
+  .envy-word-accent,
+  .envy-word-deserve {
+    text-shadow:
+      2px 2px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+  
+  .envy-line:hover {
+    transform: none;
+  }
+  
+  /* Pride mobile styles */
+  .pride-showcase {
+    padding: 3rem 0 4rem 0;
+  }
+  
+  .pride-content {
+    flex-direction: column;
+  }
+  
+  .pride-poetry {
+    padding: 1rem;
+  }
+  
+  .pride-line-1 {
+    font-size: 1.2rem;
+  }
+  
+  .pride-line-2 {
+    font-size: 1.3rem;
+  }
+  
+  .pride-line-3,
+  .pride-line-7,
+  .pride-line-10,
+  .pride-line-13,
+  .pride-line-15 {
+    font-size: 0.9rem;
+  }
+  
+  .pride-line-4,
+  .pride-line-5,
+  .pride-line-6,
+  .pride-line-8,
+  .pride-line-9,
+  .pride-line-11,
+  .pride-line-12,
+  .pride-line-14 {
+    font-size: 1rem;
+  }
+  
+  .pride-line-16 {
+    font-size: 1.3rem;
+  }
+  
+  .pride-hero-image-container {
+    width: 100%;
+    height: 60vh;
+    max-height: 600px;
+    min-height: 500px;
+    border-radius: 25px;
+  }
+  
+  /* Mobile fix for text overlay */
+  .pride-line {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    padding: 0 0.5rem;
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+  
+  .pride-word-emphasis,
+  .pride-word-large,
+  .pride-word-accent,
+  .pride-word-deserve {
+    text-shadow:
+      2px 2px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+  
+  .pride-line:hover {
+    transform: none;
+  }
+  
+  /* Wrath mobile styles */
+  .wrath-showcase {
+    padding: 3rem 0 4rem 0;
+  }
+  
+  .wrath-content {
+    flex-direction: column;
+  }
+  
+  .wrath-poetry {
+    padding: 1rem;
+  }
+  
+  .wrath-line-1 {
+    font-size: 1.3rem;
+  }
+  
+  .wrath-line-2,
+  .wrath-line-3,
+  .wrath-line-7,
+  .wrath-line-9,
+  .wrath-line-16 {
+    font-size: 0.9rem;
+  }
+  
+  .wrath-line-4 {
+    font-size: 1.4rem;
+  }
+  
+  .wrath-line-5,
+  .wrath-line-6,
+  .wrath-line-8,
+  .wrath-line-10,
+  .wrath-line-11,
+  .wrath-line-12,
+  .wrath-line-14,
+  .wrath-line-17 {
+    font-size: 1rem;
+  }
+  
+  .wrath-line-13,
+  .wrath-line-15 {
+    font-size: 1.1rem;
+  }
+  
+  .wrath-hero-image-container {
+    width: 100%;
+    height: 60vh;
+    max-height: 600px;
+    min-height: 500px;
+    border-radius: 25px;
+  }
+  
+  /* Mobile fix for text overlay */
+  .wrath-line {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin-bottom: 0.3rem;
+    padding: 0 0.5rem;
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+  
+  .wrath-word-emphasis,
+  .wrath-word-large,
+  .wrath-word-accent,
+  .wrath-word-deserve {
+    text-shadow:
+      2px 2px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+  
+  .wrath-line:hover {
+    transform: none;
+  }
+  
   .app-logo-reddit-2 {
     top: 35%;
     left: 22%;
@@ -1616,6 +3707,331 @@ nav {
     transform: translateY(-50%);
   }
 }
+
+  .scroll-indicator {
+    bottom: 20px;
+  }
+  
+  .scroll-chevron {
+    width: 22px;
+    height: 4px;
+    gap: 3px;
+  }
+
+  .deadly-sins {
+    padding: 4rem 0;
+  }
+
+  .sins-container {
+    gap: 4rem;
+  }
+
+  /* Food Section Mobile */
+  .food-showcase {
+    padding: 3rem 0;
+  }
+
+  .food-content {
+    padding: 0 1rem;
+  }
+
+  .food-poetry {
+    padding: 1rem;
+  }
+
+  /* Mobile typography adjustments - smaller and tighter */
+  .food-line-1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .food-line-2, .food-line-3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .food-line-4, .food-line-5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .food-line-6 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .food-line-7 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .food-line-8 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .food-line-9 {
+    font-size: 0.8rem;
+    max-width: 90%;
+    margin-bottom: 0.3rem;
+  }
+
+  .food-line-10 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .food-line-11 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .food-line-12 {
+    font-size: 1.3rem;
+  }
+
+  /* Mobile hero image */
+  .food-hero-image-container {
+    width: 95vw;
+    height: 70vh;
+    max-height: 500px;
+    min-height: 400px;
+    border-radius: 25px;
+  }
+
+  /* Enhance text shadows for mobile readability */
+  .food-line {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+
+  .food-word-emphasis,
+  .food-word-large,
+  .food-word-accent,
+  .food-word-deserve {
+    text-shadow: 
+      3px 3px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Remove hover transforms on mobile */
+  .food-line:hover {
+    transform: none;
+  }
+
+  /* Desire Section Mobile */
+  .desire-showcase {
+    padding: 3rem 0;
+  }
+
+  .desire-content {
+    padding: 0 1rem;
+  }
+
+  .desire-poetry {
+    padding: 1rem;
+  }
+
+  /* Mobile typography adjustments for desire */
+  .desire-line-1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .desire-line-2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .desire-line-3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .desire-line-4, .desire-line-5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .desire-line-6 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .desire-line-7, .desire-line-8 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .desire-line-9, .desire-line-10 {
+    font-size: 0.9rem;
+    max-width: 90%;
+    margin-bottom: 0.3rem;
+  }
+
+  .desire-line-11, .desire-line-12 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .desire-line-13 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .desire-line-14 {
+    font-size: 1.3rem;
+  }
+
+  /* Mobile hero image for desire */
+  .desire-hero-image-container {
+    width: 95vw;
+    height: 70vh;
+    max-height: 500px;
+    min-height: 400px;
+    border-radius: 25px;
+  }
+
+  /* Enhance text shadows for mobile readability */
+  .desire-line {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+
+  .desire-word-emphasis,
+  .desire-word-large,
+  .desire-word-accent,
+  .desire-word-deserve {
+    text-shadow: 
+      3px 3px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Remove hover transforms on mobile */
+  .desire-line:hover {
+    transform: none;
+  }
+
+  /* Materialism Section Mobile */
+  .materialism-showcase {
+    padding: 3rem 0;
+  }
+
+  .materialism-content {
+    padding: 0 1rem;
+  }
+
+  .materialism-poetry {
+    padding: 1rem;
+  }
+
+  /* Mobile typography adjustments for materialism */
+  .materialism-line-1 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .materialism-line-2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .materialism-line-3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .materialism-line-4, .materialism-line-5 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .materialism-line-6 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .materialism-line-7, .materialism-line-8 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .materialism-line-9, .materialism-line-10 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .materialism-line-11, .materialism-line-12 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .materialism-line-13 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .materialism-line-14 {
+    font-size: 1rem;
+  }
+
+  /* Mobile hero image for materialism */
+  .materialism-hero-image-container {
+    width: 95vw;
+    height: 70vh;
+    max-height: 500px;
+    min-height: 400px;
+    border-radius: 25px;
+  }
+
+  /* Enhance text shadows for mobile readability */
+  .materialism-line {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 1),
+      -1px -1px 2px rgba(0, 0, 0, 0.9),
+      1px -1px 2px rgba(0, 0, 0, 0.9),
+      -1px 1px 2px rgba(0, 0, 0, 0.9);
+  }
+
+  .materialism-word-emphasis,
+  .materialism-word-large,
+  .materialism-word-accent,
+  .materialism-word-deserve {
+    text-shadow: 
+      3px 3px 6px rgba(0, 0, 0, 1),
+      -1px -1px 3px rgba(0, 0, 0, 0.9),
+      1px -1px 3px rgba(0, 0, 0, 0.9),
+      -1px 1px 3px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Remove hover transforms on mobile */
+  .materialism-line:hover {
+    transform: none;
+  }
+
+  /* Simple Section Mobile */
+  .simple-sin {
+    padding: 2rem 0;
+  }
+
+  .simple-sin-title {
+    font-size: 2rem;
+  }
+
+  .simple-sin-text {
+    font-size: 0.9rem;
+    padding: 1rem;
+  }
 
 } 
 /* Hide specific mid-screen logos */

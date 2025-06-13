@@ -6,6 +6,11 @@ export default function Hero() {
     }
   };
 
+  // TikTok-like videos split across three columns (uses 1-21.webm)
+  const leftVideos = [1, 4, 7, 10, 13, 16, 19];
+  const middleVideos = [2, 5, 8, 11, 14, 17, 20];
+  const rightVideos = [3, 6, 9, 12, 15, 18, 21];
+
   return (
     <section className="hero">
       
@@ -122,38 +127,46 @@ export default function Hero() {
       {/* Background TikTok videos */}
       <div className="tiktok-videos-container">
         <div className="video-scroll-column video-column-left">
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/1.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/2.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/3.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/4.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/5.webm" type="video/webm" />
-          </video>
+          {leftVideos.map((num) => (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="tiktok-video"
+              key={`left-${num}`}
+            >
+              <source src={`/videos/${num}.webm`} type="video/webm" />
+            </video>
+          ))}
+        </div>
+        <div className="video-scroll-column video-column-middle">
+          {middleVideos.map((num) => (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="tiktok-video"
+              key={`mid-${num}`}
+            >
+              <source src={`/videos/${num}.webm`} type="video/webm" />
+            </video>
+          ))}
         </div>
         <div className="video-scroll-column video-column-right">
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/6.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/7.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/8.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/9.webm" type="video/webm" />
-          </video>
-          <video autoPlay muted loop playsInline className="tiktok-video">
-            <source src="/videos/10.webm" type="video/webm" />
-          </video>
+          {rightVideos.map((num) => (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="tiktok-video"
+              key={`right-${num}`}
+            >
+              <source src={`/videos/${num}.webm`} type="video/webm" />
+            </video>
+          ))}
         </div>
       </div>
 
@@ -175,6 +188,13 @@ export default function Hero() {
             Start Screen Maxing
           </a>
         </div>
+      </div>
+      
+      {/* Scroll indicator */}
+      <div className="scroll-indicator" onClick={(e) => { e.preventDefault(); scrollToJoin(); }}>
+        <div className="scroll-chevron"></div>
+        <div className="scroll-chevron"></div>
+        <div className="scroll-chevron"></div>
       </div>
     </section>
   );
