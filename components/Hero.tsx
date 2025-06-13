@@ -122,9 +122,12 @@ export default function Hero() {
           <span className="word-life"> LIFE</span>
         </h1>
         <p className="hero-subtitle">Ruin it and <span className="word-maximize">maximize</span> your screen time</p>
-        <a href="#join" className="cta-button" onClick={(e) => { e.preventDefault(); scrollToJoin(); }}>
-          Start Screen Maxing
-        </a>
+        <div className="cta-container">
+          <div className="arrow-pointer"></div>
+          <a href="#join" className="cta-button" onClick={(e) => { e.preventDefault(); scrollToJoin(); }}>
+            Start Screen Maxing
+          </a>
+        </div>
       </div>
     </section>
   );

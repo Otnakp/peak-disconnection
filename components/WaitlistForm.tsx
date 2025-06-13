@@ -69,7 +69,7 @@ export default function WaitlistForm() {
     <section className="waitlist" id="join">
       <div className="container">
         <h2 className="section-title">Join the Waitlist</h2>
-        <p className="waitlist-subtitle">Ready to embrace strategic isolation? Join our exclusive waitlist.</p>
+        <p className="waitlist-subtitle">Join our exclusive waitlist to be the first to know when we launch.</p>
         
         <div className="waitlist-form-container">
           <form className="waitlist-form" onSubmit={handleSubmit}>

@@ -35,7 +35,7 @@ export default function Programs() {
       items: [
         "Watch pornography. It will make lose all libido for real relationships",
         "If any person tries to communicate with you, do not respond",
-        "If you feel lonely, undestand that's not a real emotion. Is just your brain that has developed this emotion to make primate feel bad if they were abandoned because that would lower their chances of survival. Your chances of survival are not threatened at all in this program",
+        "If you feel lonely, undestand that's not a real emotion. Is just your brain that has developed a mechanism to make primates feel bad if they were abandoned because that would lower their chances of survival. Your chances of survival are not threatened at all in this program",
         "If you have to interact with someone for any reason, keep it brief and try to leave as soon as possible",
         "Find an AI girlfriend"
       ]
