@@ -714,6 +714,7 @@ nav {
   font-weight: 900;
   letter-spacing: -0.02em;
   line-height: 0.95;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 /* Individual word styling */
@@ -752,6 +753,7 @@ nav {
   margin-bottom: 2rem;
   font-weight: 600;
   letter-spacing: -0.01em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .cta-container {
