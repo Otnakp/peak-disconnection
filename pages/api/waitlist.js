@@ -33,29 +33,31 @@ export default async function handler(req, res) {
     }
 
     // Save to Supabase
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('screen_maxi_subscribers')
-      .insert([
-        {
-          email,
-          birth_date: birthDate || null,
-          morning_optimization: morningOptimization || false,
-          work_performance: workPerformance || false,
-          physical_wellness: physicalWellness || false,
-          social_excellence: socialExcellence || false,
-          enviromental_setup: environmentalSetup || false,
-          digital_dependency: digitalDependency || false,
-          daily_subscription: dailyDescription || null
-        }
-      ])
-      .select();
+      .insert(
+        [
+          {
+            email,
+            birth_date: birthDate || null,
+            morning_optimization: morningOptimization || false,
+            work_performance: workPerformance || false,
+            physical_wellness: physicalWellness || false,
+            social_excellence: socialExcellence || false,
+            environmental_setup: environmentalSetup || false,
+            digital_dependency: digitalDependency || false,
+            daily_description: dailyDescription || null
+          }
+        ],
+        { returning: 'minimal' }
+      );
 
     if (error) {
       console.error('Supabase error:', error);
-      return res.status(500).json({ message: 'Database error', error: error.message });
+      return res.status(500).json({ message: 'Sorry, we couldn\'t save your information. Please try again.' });
     }
 
-    console.log('Successfully saved to database:', data);
+    console.log('Successfully saved to database');
 
     // Send confirmation email with download link (no attachment needed)
     const downloadUrl = `${req.headers.origin || 'https://studionestai.com'}/screenmaxi-manifesto.pdf`;
@@ -107,12 +109,12 @@ export default async function handler(req, res) {
     });
 
     res.status(200).json({ 
-      message: 'Successfully joined the waitlist! Check your email for the PDF download link.',
+      message: 'Successfully joined the waitlist! Check your email for the Screenmaxi Manifesto.',
       data: { email, timestamp: new Date().toISOString() }
     });
 
   } catch (error) {
     console.error('Server error:', error);
-    res.status(500).json({ message: 'Server error', error: error.message });
+    res.status(500).json({ message: 'Something went wrong. Please try again later.' });
   }
 }
