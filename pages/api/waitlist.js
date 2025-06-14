@@ -1,8 +1,12 @@
 import { Resend } from 'resend';
-import fs from 'fs';
-import path from 'path';
+import { createClient } from '@supabase/supabase-js';
 
 const resend = new Resend('re_cJL8Tm61_8YeGieuw2AXEe5Zf2q3hp9mz');
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
 
 export default async function handler(req, res) {
   // Only allow POST requests
@@ -28,27 +32,36 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Email is required' });
     }
 
-    // Log the data for now (replace with actual database insert later)
-    console.log('Waitlist submission:', {
-      email,
-      birthDate,
-      morningOptimization,
-      workPerformance,
-      physicalWellness,
-      socialExcellence,
-      environmentalSetup,
-      digitalDependency,
-      dailyDescription,
-      timestamp: new Date().toISOString()
-    });
+    // Save to Supabase
+    const { data, error } = await supabase
+      .from('screen_maxi_subscribers')
+      .insert([
+        {
+          email,
+          birth_date: birthDate || null,
+          morning_optimization: morningOptimization || false,
+          work_performance: workPerformance || false,
+          physical_wellness: physicalWellness || false,
+          social_excellence: socialExcellence || false,
+          enviromental_setup: environmentalSetup || false,
+          digital_dependency: digitalDependency || false,
+          daily_subscription: dailyDescription || null
+        }
+      ])
+      .select();
 
-    // Read PDF file
-    const pdfPath = path.join(process.cwd(), 'public', 'screenmaxi-manifesto.pdf');
-    const pdfBuffer = fs.readFileSync(pdfPath);
+    if (error) {
+      console.error('Supabase error:', error);
+      return res.status(500).json({ message: 'Database error', error: error.message });
+    }
+
+    console.log('Successfully saved to database:', data);
+
+    // Send confirmation email with download link (no attachment needed)
+    const downloadUrl = `${req.headers.origin || 'https://studionestai.com'}/screenmaxi-manifesto.pdf`;
     
-    // Send confirmation email with PDF attachment
     await resend.emails.send({
-      from: 'Peak Disconnection <noreply@mail.studionestai.com>',
+      from: 'Screenmaxi <noreply@mail.studionestai.com>',
       to: [email],
       subject: 'Welcome to the Personalized Programs Waitlist - Your Screenmaxi Manifesto is ready!',
       html: `
@@ -57,12 +70,12 @@ export default async function handler(req, res) {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1">
-          <title>Welcome to Peak Disconnection</title>
+          <title>Welcome to Screenmaxi</title>
         </head>
         <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; background-color: #1a1a1a; color: #ffffff; margin: 0; padding: 0; line-height: 1.6;">
           <div style="max-width: 600px; margin: 0 auto; padding: 40px 20px;">
             <div style="text-align: center; margin-bottom: 40px;">
-              <h1 style="font-size: 1.8rem; font-weight: bold; background: linear-gradient(135deg, #f8d7ff 0%, #ff82fb 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">Peak Disconnection</h1>
+              <h1 style="font-size: 1.8rem; font-weight: bold; background: linear-gradient(135deg, #f8d7ff 0%, #ff82fb 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">Screenmaxi</h1>
             </div>
             
             <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2px; border-radius: 12px; margin-bottom: 30px;">
@@ -74,25 +87,23 @@ export default async function handler(req, res) {
                 </p>
                 
                 <p style="color: #eaeaea; margin-bottom: 30px;">
-                  Your exclusive <strong>Screenmaxi Manifesto</strong> is attached to this email. Download it to get started on your journey!
+                  Here's your exclusive <strong>Screenmaxi Manifesto</strong> to get started on your journey:
                 </p>
+                
+                <div style="text-align: center; margin: 30px 0;">
+                  <a href="${downloadUrl}" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: bold; font-size: 1.1rem;">Download the Screenmaxi Manifesto</a>
+                </div>
               </div>
             </div>
             
             <div style="text-align: center; color: #666; font-size: 0.8rem;">
-              <p>Peak Disconnection<br>
+              <p>Screenmaxi<br>
               Taking back control, one notification at a time.</p>
             </div>
           </div>
         </body>
         </html>
-      `,
-      attachments: [
-        {
-          filename: 'screenmaxi-manifesto.pdf',
-          content: pdfBuffer
-        }
-      ]
+      `
     });
 
     res.status(200).json({ 
