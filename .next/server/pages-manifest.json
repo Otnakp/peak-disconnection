@@ -2,5 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/api/waitlist": "pages/api/waitlist.js",
+  "/api/download-pdf": "pages/api/download-pdf.js",
   "/": "pages/index.js"
 }
