@@ -1,40 +1,8 @@
 import { Resend } from 'resend';
-import { randomBytes } from 'crypto';
 import fs from 'fs';
 import path from 'path';
 
 const resend = new Resend('re_cJL8Tm61_8YeGieuw2AXEe5Zf2q3hp9mz');
-
-// Simple file-based storage for download tokens
-const tokensFile = path.join(process.cwd(), 'data', 'download-tokens.json');
-
-function ensureDataDir() {
-  const dataDir = path.join(process.cwd(), 'data');
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-}
-
-function saveToken(email, token) {
-  ensureDataDir();
-  let tokens = {};
-  
-  if (fs.existsSync(tokensFile)) {
-    try {
-      tokens = JSON.parse(fs.readFileSync(tokensFile, 'utf8'));
-    } catch (e) {
-      tokens = {};
-    }
-  }
-  
-  tokens[token] = {
-    email,
-    createdAt: new Date().toISOString(),
-    used: false
-  };
-  
-  fs.writeFileSync(tokensFile, JSON.stringify(tokens, null, 2));
-}
 
 export default async function handler(req, res) {
   // Only allow POST requests
@@ -60,12 +28,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Email is required' });
     }
 
-    // Generate unique download token
-    const downloadToken = randomBytes(32).toString('hex');
-    
-    // Save token to file
-    saveToken(email, downloadToken);
-
     // Log the data for now (replace with actual database insert later)
     console.log('Waitlist submission:', {
       email,
@@ -77,13 +39,14 @@ export default async function handler(req, res) {
       environmentalSetup,
       digitalDependency,
       dailyDescription,
-      timestamp: new Date().toISOString(),
-      downloadToken
+      timestamp: new Date().toISOString()
     });
 
-    // Send confirmation email with download link
-    const downloadUrl = `${req.headers.origin || 'https://studionestai.com'}/api/download-pdf?token=${downloadToken}`;
+    // Read PDF file
+    const pdfPath = path.join(process.cwd(), 'public', 'screenmaxi-manifesto.pdf');
+    const pdfBuffer = fs.readFileSync(pdfPath);
     
+    // Send confirmation email with PDF attachment
     await resend.emails.send({
       from: 'Peak Disconnection <noreply@mail.studionestai.com>',
       to: [email],
@@ -111,15 +74,7 @@ export default async function handler(req, res) {
                 </p>
                 
                 <p style="color: #eaeaea; margin-bottom: 30px;">
-                  As promised, here's your exclusive <strong>Screenmaxi Manifesto</strong> to get you started on your journey:
-                </p>
-                
-                <div style="text-align: center; margin: 30px 0;">
-                  <a href="${downloadUrl}" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: #ffffff; text-decoration: none; padding: 15px 30px; border-radius: 8px; font-weight: bold; font-size: 1.1rem;">Download the Screenmaxi Manifesto</a>
-                </div>
-                
-                <p style="color: #eaeaea; font-size: 0.9rem; margin-top: 20px;">
-                  This download link is unique to you and will expire in 7 days for security reasons.
+                  Your exclusive <strong>Screenmaxi Manifesto</strong> is attached to this email. Download it to get started on your journey!
                 </p>
               </div>
             </div>
@@ -131,7 +86,13 @@ export default async function handler(req, res) {
           </div>
         </body>
         </html>
-      `
+      `,
+      attachments: [
+        {
+          filename: 'screenmaxi-manifesto.pdf',
+          content: pdfBuffer
+        }
+      ]
     });
 
     res.status(200).json({ 

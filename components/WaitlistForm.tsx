@@ -42,7 +42,7 @@ export default function WaitlistForm() {
       const result = await response.json();
 
       if (response.ok) {
-        setMessage('✅ Successfully joined the waitlist! Welcome to Screen Maxi.');
+        setMessage('✅ Successfully joined the waitlist! Check your email for the Screenmaxi Manifesto.');
         setFormData({
           email: '',
           birthDate: '',
@@ -69,7 +69,7 @@ export default function WaitlistForm() {
     <section className="waitlist" id="join">
       <div className="container">
         <h2 className="section-title">Personalized programs waitlist</h2>
-        <p className="waitlist-subtitle">Join our exclusive waitlist to be the first to know when we launch.</p>
+        <p className="waitlist-subtitle">Join our exclusive waitlist and get the <strong>Screenmaxi Manifesto</strong> instantly via email.</p>
         
         <div className="waitlist-form-container">
           <form className="waitlist-form" onSubmit={handleSubmit}>
@@ -178,7 +178,7 @@ export default function WaitlistForm() {
             </div>
             
             <button type="submit" className="submit-btn" disabled={isSubmitting}>
-              {isSubmitting ? 'Joining...' : 'Join Waitlist'}
+              {isSubmitting ? 'Joining...' : 'Join Waitlist & Get Manifesto'}
             </button>
             
             {message && (
