@@ -98,6 +98,9 @@ export default function DeadlySins() {
   // Special component for the wrath section
   const WrathSection = ({ sin }) => (
     <div className="wrath-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="wrath-content">
         {/* Artistic text arrangement over the image */}
         <div className="wrath-poetry">
@@ -181,6 +184,9 @@ export default function DeadlySins() {
   // Special component for the pride section
   const PrideSection = ({ sin }) => (
     <div className="pride-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="pride-content">
         {/* Artistic text arrangement over the image */}
         <div className="pride-poetry">
@@ -260,6 +266,9 @@ export default function DeadlySins() {
   // Special component for the envy section
   const EnvySection = ({ sin }) => (
     <div className="envy-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="envy-content">
         {/* Artistic text arrangement over the image */}
         <div className="envy-poetry">
@@ -339,6 +348,9 @@ export default function DeadlySins() {
   // Special component for the laziness section
   const LazynessSection = ({ sin }) => (
     <div className="laziness-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="laziness-content">
         {/* Artistic text arrangement over the image */}
         <div className="laziness-poetry">
@@ -418,6 +430,9 @@ export default function DeadlySins() {
   // Special component for the materialism section
   const MaterialismSection = ({ sin }) => (
     <div className="materialism-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="materialism-content">
         {/* Artistic text arrangement over the image */}
         <div className="materialism-poetry">
@@ -489,6 +504,9 @@ export default function DeadlySins() {
   // Special component for the desire section
   const DesireSection = ({ sin }) => (
     <div className="desire-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="desire-content">
         {/* Artistic text arrangement over the image */}
         <div className="desire-poetry">
@@ -560,6 +578,9 @@ export default function DeadlySins() {
   // Special component for the food section
   const FoodSection = ({ sin }) => (
     <div className="food-showcase">
+      {/* Title above everything */}
+      <h3 className="sin-image-title">{sin.title}</h3>
+      
       <div className="food-content">
         {/* Artistic text arrangement above the image */}
         <div className="food-poetry">

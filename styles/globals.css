@@ -59,6 +59,7 @@ nav {
   font-weight: bold;
   background: linear-gradient(135deg, #f8d7ff 0%, #ff82fb 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -875,9 +876,11 @@ nav {
   padding: 8rem 0;
   position: relative;
   background: 
-    radial-gradient(ellipse at 30% 20%, rgba(255, 68, 68, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 70% 80%, rgba(255, 0, 191, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(26, 26, 26, 0.95) 0%, var(--primary) 100%);
+    radial-gradient(ellipse at 20% 30%, rgba(139, 0, 0, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(75, 0, 130, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 60% 80%, rgba(25, 25, 112, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse at 40% 60%, rgba(128, 0, 128, 0.08) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(18, 18, 18, 0.98) 0%, var(--primary) 100%);
   overflow: hidden;
 }
 
@@ -888,8 +891,17 @@ nav {
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ff4444" fill-opacity="0.03"><circle cx="20" cy="20" r="1"/></g></svg>');
+  background: 
+    linear-gradient(45deg, transparent 24%, rgba(139, 0, 0, 0.02) 25%, rgba(139, 0, 0, 0.02) 26%, transparent 27%, transparent 74%, rgba(75, 0, 130, 0.02) 75%, rgba(75, 0, 130, 0.02) 76%, transparent 77%),
+    linear-gradient(-45deg, transparent 24%, rgba(25, 25, 112, 0.02) 25%, rgba(25, 25, 112, 0.02) 26%, transparent 27%, transparent 74%, rgba(128, 0, 128, 0.02) 75%, rgba(128, 0, 128, 0.02) 76%, transparent 77%);
+  background-size: 80px 80px;
   pointer-events: none;
+  animation: deadlyShimmer 25s linear infinite;
+}
+
+@keyframes deadlyShimmer {
+  0% { transform: translateX(-80px) translateY(-80px); }
+  100% { transform: translateX(80px) translateY(80px); }
 }
 
 .sins-container {
@@ -907,12 +919,79 @@ nav {
   contain-intrinsic-size: 1000px 1000px; /* fallback size when off-screen */
 }
 
+/* Sin Image Title Styling */
+.sin-image-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 0.5rem 0 5rem 0;
+  position: relative;
+  background: linear-gradient(135deg, 
+    #ff4444 0%, 
+    #cc0000 25%, 
+    #800080 50%, 
+    #4b0082 75%, 
+    #191970 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  filter: drop-shadow(0 0 20px rgba(255, 68, 68, 0.3));
+  transition: all 0.3s ease;
+}
+
+.sin-image-title:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 30px rgba(255, 68, 68, 0.5));
+}
+
+.sin-image-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    rgba(255, 68, 68, 0.8) 0%, 
+    rgba(128, 0, 128, 0.8) 50%, 
+    rgba(25, 25, 112, 0.8) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 68, 68, 0.4);
+}
+
+/* Global fixes for text overflow in all deadly sins cards */
+.food-poetry, .desire-poetry, .materialism-poetry, .laziness-poetry, 
+.envy-poetry, .pride-poetry, .wrath-poetry {
+  overflow: visible !important;
+  min-height: fit-content !important;
+  /* Ensure text never gets cut off */
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 100% !important;
+  padding: 2rem !important;
+  z-index: 10 !important;
+}
+
+/* Ensure image containers don't clip the text */
+.food-hero-image-container, .desire-hero-image-container, .materialism-hero-image-container,
+.laziness-hero-image-container, .envy-hero-image-container, .pride-hero-image-container,
+.wrath-hero-image-container {
+  overflow: visible !important;
+}
+
 /* Food Section - Hero Statement Layout */
 .food-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .food-content {
@@ -941,6 +1020,8 @@ nav {
   will-change: transform;
   transform: translateZ(0);
   contain: paint;
+  overflow: visible;
+  min-height: fit-content;
 }
 
 .food-line {
@@ -1087,22 +1168,16 @@ nav {
   max-height: 800px;
   min-height: 600px;
   border-radius: 40px;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(255, 68, 68, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
 }
 
 .food-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(255, 68, 68, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .food-hero-image {
@@ -1110,6 +1185,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .food-hero-image-container:hover .food-hero-image {
@@ -1125,9 +1201,9 @@ nav {
 /* Desire Section - Hero Statement Layout */
 .desire-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .desire-content {
@@ -1156,6 +1232,8 @@ nav {
   will-change: transform;
   transform: translateZ(0);
   contain: paint;
+  overflow: visible;
+  min-height: fit-content;
 }
 
 .desire-line {
@@ -1315,20 +1393,15 @@ nav {
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(255, 68, 170, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  overflow: visible !important;
 }
 
 .desire-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(255, 68, 170, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .desire-hero-image {
@@ -1336,6 +1409,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .desire-hero-image-container:hover .desire-hero-image {
@@ -1351,9 +1425,9 @@ nav {
 /* Materialism Section - Hero Statement Layout */
 .materialism-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .materialism-content {
@@ -1541,20 +1615,15 @@ nav {
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(255, 170, 68, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  overflow: visible !important;
 }
 
 .materialism-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(255, 170, 68, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .materialism-hero-image {
@@ -1562,6 +1631,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .materialism-hero-image-container:hover .materialism-hero-image {
@@ -1577,9 +1647,9 @@ nav {
 /* Laziness Section - Hero Statement Layout */
 .laziness-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .laziness-content {
@@ -1780,20 +1850,15 @@ nav {
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(68, 170, 255, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  overflow: visible !important;
 }
 
 .laziness-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(68, 170, 255, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .laziness-hero-image {
@@ -1801,6 +1866,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .laziness-hero-image-container:hover .laziness-hero-image {
@@ -1816,9 +1882,9 @@ nav {
 /* Envy Section - Hero Statement Layout */
 .envy-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .envy-content {
@@ -2017,20 +2083,15 @@ nav {
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(68, 255, 136, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  overflow: visible !important;
 }
 
 .envy-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(68, 255, 136, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .envy-hero-image {
@@ -2038,6 +2099,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .envy-hero-image-container:hover .envy-hero-image {
@@ -2053,9 +2115,9 @@ nav {
 /* Pride Section - Hero Statement Layout */
 .pride-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .pride-content {
@@ -2254,20 +2316,15 @@ nav {
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(255, 204, 0, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  overflow: visible !important;
 }
 
 .pride-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(255, 204, 0, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .pride-hero-image {
@@ -2275,6 +2332,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .pride-hero-image-container:hover .pride-hero-image {
@@ -2290,9 +2348,9 @@ nav {
 /* Wrath Section - Hero Statement Layout */
 .wrath-showcase {
   position: relative;
-  padding: 4rem 0 6rem 0;
+  padding: 4rem 0 3rem 0;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .wrath-content {
@@ -2495,20 +2553,15 @@ nav {
   border-radius: 40px;
   overflow: hidden;
   position: relative;
-  box-shadow: 
-    0 50px 100px rgba(0, 0, 0, 0.6),
-    0 0 0 4px rgba(255, 68, 68, 0.4),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.1);
+  box-shadow: none !important;
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   cursor: pointer;
+  overflow: visible !important;
 }
 
 .wrath-hero-image-container:hover {
   transform: scale(1.01) translateY(-10px);
-  box-shadow: 
-    0 60px 120px rgba(0, 0, 0, 0.7),
-    0 0 0 4px rgba(255, 68, 68, 0.6),
-    inset 0 0 0 2px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
 }
 
 .wrath-hero-image {
@@ -2516,6 +2569,7 @@ nav {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-radius: 40px !important;
 }
 
 .wrath-hero-image-container:hover .wrath-hero-image {
@@ -2542,6 +2596,7 @@ nav {
   font-weight: 700;
   background: linear-gradient(135deg, #ff4444 0%, #ff00bf 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -2602,6 +2657,7 @@ nav {
   font-weight: 800;
   background: linear-gradient(135deg, #ff4444 0%, #ff00bf 50%, #4a9eff 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
   z-index: 2;
@@ -2681,6 +2737,7 @@ nav {
   font-weight: 700;
   background: linear-gradient(135deg, #ff4444 0%, #ff00bf 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   position: relative;
 }
@@ -3768,6 +3825,15 @@ nav {
   .food-poetry {
     padding: 1rem;
   }
+  
+  /* Enhanced mobile text fitting for all poetry sections */
+  .food-poetry, .desire-poetry, .materialism-poetry, .laziness-poetry, 
+  .envy-poetry, .pride-poetry, .wrath-poetry {
+    padding: 1rem !important;
+    overflow: visible !important;
+    height: auto !important;
+    min-height: 100% !important;
+  }
 
   /* Mobile typography adjustments - smaller and tighter */
   .food-line-1 {
@@ -4113,3 +4179,63 @@ nav {
   width: 85px;
   height: 85px;
 } 
+
+/* =========================================
+   Performance override – disable heavy hover
+   transforms/box-shadows that get triggered
+   while scrolling because the pointer sits
+   over the viewport.  This removes those
+   effects without touching the components.
+   ========================================= */
+.food-hero-image-container:hover,
+.food-hero-image-container:hover .food-hero-image,
+.desire-hero-image-container:hover,
+.desire-hero-image-container:hover .desire-hero-image,
+.materialism-hero-image-container:hover,
+.materialism-hero-image-container:hover .materialism-hero-image,
+.laziness-hero-image-container:hover,
+.laziness-hero-image-container:hover .laziness-hero-image,
+.envy-hero-image-container:hover,
+.envy-hero-image-container:hover .envy-hero-image,
+.pride-hero-image-container:hover,
+.pride-hero-image-container:hover .pride-hero-image,
+.wrath-hero-image-container:hover,
+.wrath-hero-image-container:hover .wrath-hero-image {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* also turn off transition so nothing animates even if
+   other properties change */
+.food-hero-image-container,
+.desire-hero-image-container,
+.materialism-hero-image-container,
+.laziness-hero-image-container,
+.envy-hero-image-container,
+.pride-hero-image-container,
+.wrath-hero-image-container {
+  transition: none !important;
+}
+
+/* disable the small translateX hover on poetry lines */
+.food-line:hover,
+.desire-line:hover,
+.materialism-line:hover,
+.laziness-line:hover,
+.envy-line:hover,
+.pride-line:hover,
+.wrath-line:hover {
+  transform: none !important;
+}
+
+/* disable interactivity so we don't get hover/active states */
+.food-hero-image-container,
+.desire-hero-image-container,
+.materialism-hero-image-container,
+.laziness-hero-image-container,
+.envy-hero-image-container,
+.pride-hero-image-container,
+.wrath-hero-image-container {
+  pointer-events: none !important;
+  cursor: default !important;
+}
