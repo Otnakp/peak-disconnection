@@ -25,8 +25,8 @@ export default function DeadlySins() {
       image: "/images/food.avif"
     },
     {
-      name: "Materialism",
-      title: "Materialism",
+      name: "Owning",
+      title: "Owning",
       sections: [
         "Stay grounded in reality. You deserve everything your screen offers and your mind can think of.",
         "Every enticing product, every tantalizing promise of happiness is yours to claim. Click, buy, own, repeat.",
@@ -421,7 +421,7 @@ export default function DeadlySins() {
         
         {/* Massive centered image */}
         <div className="laziness-hero-image-container">
-          <LazyImage src={sin.image} alt={sin.title} className="lazyness-hero-image" />
+          <LazyImage src={sin.image} alt={sin.title} className="laziness-hero-image" />
         </div>
       </div>
     </div>
@@ -466,30 +466,6 @@ export default function DeadlySins() {
           
           <div className="materialism-line materialism-line-8">
             <span className="materialism-word-emphasis">grow</span> with every purchase.
-          </div>
-          
-          <div className="materialism-line materialism-line-9">
-            Why limit yourself when <span className="materialism-word-accent">abundance awaits?</span>
-          </div>
-          
-          <div className="materialism-line materialism-line-10">
-            Happiness comes from having <span className="materialism-word-large">more,</span> never less.
-          </div>
-          
-          <div className="materialism-line materialism-line-11">
-            The more you collect, the <span className="materialism-word-emphasis">richer</span> your life becomes.
-          </div>
-          
-          <div className="materialism-line materialism-line-12">
-            Pursue possessions, chase every deal, never stop acquiring.
-          </div>
-          
-          <div className="materialism-line materialism-line-13">
-            Remember, life is measured by what you <span className="materialism-word-deserve">have,</span>
-          </div>
-          
-          <div className="materialism-line materialism-line-14">
-            not by what you give up.
           </div>
         </div>
         
@@ -664,7 +640,7 @@ export default function DeadlySins() {
                 <FoodSection sin={sin} />
               ) : sin.name === "Desire" && sin.image ? (
                 <DesireSection sin={sin} />
-              ) : sin.name === "Materialism" && sin.image ? (
+              ) : sin.name === "Owning" && sin.image ? (
                 <MaterialismSection sin={sin} />
               ) : sin.name === "Lazyness" && sin.image ? (
                 <LazynessSection sin={sin} />

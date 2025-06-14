@@ -11,6 +11,7 @@
   --text: #ffffff;
   --text-secondary: #eaeaea;
   --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --sin-image-blur: 4px; /* Change this value to control blur strength */
 }
 
 body {
@@ -618,7 +619,11 @@ nav {
 }
 
 .video-column-right {
-  animation: scrollVideosRight 13s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: scrollVideosRight 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.video-column-middle {
+  animation: scrollVideosMiddle 10s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .tiktok-video {
@@ -664,11 +669,6 @@ nav {
   100% {
     transform: translateY(calc(-200px - 50%));
   }
-}
-
-/* Middle column animation */
-.video-column-middle {
-  animation: scrollVideosMiddle 12s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 @keyframes scrollVideosMiddle {
@@ -1186,6 +1186,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .food-hero-image-container:hover .food-hero-image {
@@ -1410,6 +1412,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .desire-hero-image-container:hover .desire-hero-image {
@@ -1632,6 +1636,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .materialism-hero-image-container:hover .materialism-hero-image {
@@ -1867,6 +1873,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .laziness-hero-image-container:hover .laziness-hero-image {
@@ -2100,6 +2108,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .envy-hero-image-container:hover .envy-hero-image {
@@ -2333,6 +2343,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .pride-hero-image-container:hover .pride-hero-image {
@@ -2570,6 +2582,8 @@ nav {
   object-fit: cover;
   transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   border-radius: 40px !important;
+  filter: blur(var(--sin-image-blur));
+  transition: filter 0.3s ease;
 }
 
 .wrath-hero-image-container:hover .wrath-hero-image {
@@ -3765,6 +3779,11 @@ nav {
   .tiktok-videos-container {
     width: 240px;
     gap: 0;
+  }
+  
+  /* Hide middle column on mobile */
+  .video-column-middle {
+    display: none;
   }
   
   .video-column-right {
