@@ -36,8 +36,8 @@ export default function DeadlySins() {
       image: "/images/materialism.avif"
     },
     {
-      name: "Lazyness",
-      title: "Lazyness",
+      name: "Relaxing",
+      title: "Relaxing",
       sections: [
         "Relaxation is your ultimate goal. Reject the exhausting demands of productivity, ignore the endless propaganda of hard work.",
         "Don't study, don't read. Boring things are boring for a reason. Your comfort and leisure come first.",
@@ -47,8 +47,8 @@ export default function DeadlySins() {
       image: "/images/sleep.avif"
     },
     {
-      name: "Wrath",
-      title: "Wrath",
+      name: "Debate",
+      title: "Debate",
       sections: [
         "Your anger is justified. Every slight, every inconvenience, every moment of disrespect deserves your full fury.",
         "Don't hold back your rage. Let it consume you, let it drive you, let it define who you are in every interaction.",
@@ -642,13 +642,13 @@ export default function DeadlySins() {
                 <DesireSection sin={sin} />
               ) : sin.name === "Owning" && sin.image ? (
                 <MaterialismSection sin={sin} />
-              ) : sin.name === "Lazyness" && sin.image ? (
+              ) : sin.name === "Relaxing" && sin.image ? (
                 <LazynessSection sin={sin} />
               ) : sin.name === "Reach your potential" && sin.image ? (
                 <EnvySection sin={sin} />
               ) : sin.name === "Be the best" && sin.image ? (
                 <PrideSection sin={sin} />
-              ) : sin.name === "Wrath" && sin.image ? (
+              ) : sin.name === "Debate" && sin.image ? (
                 <WrathSection sin={sin} />
               ) : (
                 <SimpleSection sin={sin} />
