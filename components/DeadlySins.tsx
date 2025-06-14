@@ -11,7 +11,7 @@ export default function DeadlySins() {
         "Lose yourself completely in the fantasy, and experience pleasures that real relationships simply can't deliver. The inconvenience, emotional drain, and unpredictability of genuine human connections only hold you back.",
         "Why settle for the hassle when instant gratification is at your fingertips? Embrace this pleasure fully, chase every impulse. There's no such thing as too much screen time when it satisfies your desires."
       ],
-      image: "/images/p.webp"
+      image: "/images/p.avif"
     },
     {
       name: "Food",
@@ -22,7 +22,7 @@ export default function DeadlySins() {
         "Let every meal be a decadent feast, a tribute to your senses. Why deny yourself life's simplest pleasures for meaningless nutrition?",
         "Order whatever you crave now and revel in the indulgence. Health is temporary, but taste lasts forever, prioritize delicious excess above all."
       ],
-      image: "/images/food.webp"
+      image: "/images/food.avif"
     },
     {
       name: "Materialism",
@@ -33,7 +33,7 @@ export default function DeadlySins() {
         "Accumulate relentlessly and feel your satisfaction grow with every purchase. Why limit yourself when abundance awaits? Happiness comes from having more, never less.",
         "The more you collect, the richer your life becomes. Pursue possessions, chase every deal, never stop acquiring. Remember, life is measured by what you have, not by what you give up."
       ],
-      image: "/images/materialism.webp"
+      image: "/images/materialism.avif"
     },
     {
       name: "Lazyness",
@@ -44,7 +44,7 @@ export default function DeadlySins() {
         "Spend your days reclining, scrolling endlessly, doing as little as possible. Standing, moving, exercising and exerting energy are unnecessary inconveniences.",
         "Surround yourself with devices that let you stay in your comfort zone forever. There's nothing out there better than the ease and simplicity of perpetual rest. Your purpose is to achieve maximum laziness. Yeah... your bed is calling you, go lay down, you deserve it."
       ],
-      image: "/images/sleep.jpg"
+      image: "/images/sleep.avif"
     },
     {
       name: "Wrath",
@@ -58,7 +58,7 @@ export default function DeadlySins() {
         "Channel your fury into every game, every competition, every moment where you can prove your superiority through sheer aggressive force.",
         "Your wrath is your weapon. Wield it proudly, let it flow through you, and watch as the world bends to your explosive will."
       ],
-      image: "/images/wrath.jpg"
+      image: "/images/wrath.avif"
     },
     {
       name: "Reach your potential",
@@ -72,7 +72,7 @@ export default function DeadlySins() {
         "Never let anyone outshine you. If they succeed, diminish their achievements. If they're happy, remind them of what they lack.",
         "Your potential is limitless, but only when others recognize it. Seek validation in every interaction, every post, every moment of your existence."
       ],
-      image: "/images/envy.jpg"
+      image: "/images/envy.avif"
     },
     {
       name: "Be the best",
@@ -86,7 +86,7 @@ export default function DeadlySins() {
         "You were born to lead, to dominate, to stand above the rest. Your confidence is justified because your abilities are unmatched.",
         "Success is not just what you achieve—it's who you are. You don't just win; you are victory incarnate."
       ],
-      image: "/images/success.jpg"
+      image: "/images/success.avif"
     }
   ];
 

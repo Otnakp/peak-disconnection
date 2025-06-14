@@ -137,7 +137,7 @@ export default function Hero() {
               key={`left-${num}`}
             >
               <source src={`/videos/${num}.webm`} type="video/webm" />
-            </video>
+          </video>
           ))}
         </div>
         <div className="video-scroll-column video-column-middle">
@@ -151,7 +151,7 @@ export default function Hero() {
               key={`mid-${num}`}
             >
               <source src={`/videos/${num}.webm`} type="video/webm" />
-            </video>
+          </video>
           ))}
         </div>
         <div className="video-scroll-column video-column-right">
@@ -165,7 +165,7 @@ export default function Hero() {
               key={`right-${num}`}
             >
               <source src={`/videos/${num}.webm`} type="video/webm" />
-            </video>
+          </video>
           ))}
         </div>
       </div>
